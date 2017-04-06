@@ -1,0 +1,1473 @@
+body {
+
+	background: none;
+
+	margin: 0;
+
+	padding: 0;
+
+	font-family: arial;
+
+	color: #000;
+
+}
+
+
+
+a {
+
+	color: #000;
+
+}
+
+
+
+a:hover, a:focus, a:active {
+
+	outline: none;
+
+	/*text-decoration: none;*/
+
+}
+
+
+
+ul {
+
+	margin: 0;
+
+	padding: 0;
+
+	list-style: none;
+
+}
+
+
+
+img {
+
+	border: none;
+
+	height: auto;
+
+	vertical-align: middle;
+
+  	max-width: 100%;
+
+}
+
+
+
+@font-face {
+
+ font-family: oswald;
+
+ src: url("../font/oswald.regular.eot") /* EOT file for IE */
+
+}
+
+@font-face {
+
+ font-family: oswald;
+
+ src: url("../font/oswald.regular.TTF") /* TTF file for CSS3 browsers */
+
+}
+
+
+
+#header {
+
+	width: 100%;
+
+	border-top: 3px solid #30AAD1;
+
+	float: left;
+
+	padding: 15px 0;
+
+}
+
+
+
+.logo {
+
+	width: 100%;
+
+	display: block;
+
+}
+
+
+
+.logo span {
+
+	color: #666;
+
+	font-weight: normal;
+
+}
+
+
+
+.app-mb {
+
+	width: 100%;
+
+	display: block;
+
+}
+
+
+
+.app-mb h3 {
+
+	font-family: oswald;
+
+	font-size: 16px;
+
+	color: #666;
+
+}
+
+
+
+.app-mb ul li {
+
+	float: left;
+
+	margin: 0 3px;
+
+}
+
+
+
+.app-mb ul li a {
+
+	padding: 5px 8px;
+
+	background-color: #bbb;
+
+	border-radius: 5px;
+
+	color: #fff;
+
+	transition: all 0.8s ease-in-out;
+
+	display: block;
+
+	width: 30px;
+
+	height: 30px;
+
+	text-align: center;
+
+	margin: 5px 0;
+
+}
+
+
+
+.app-mb ul li .ap:hover {
+
+	background-color: #000;
+
+	transform:rotate(360deg);
+
+}
+
+
+
+.app-mb ul li .and:hover {
+
+	background-color: #98CD32;
+
+	transform:rotate(360deg);
+
+}
+
+
+
+.app-mb ul li .fb:hover {
+
+	background-color: #3b5998;
+
+	transform:rotate(360deg);
+
+}
+
+
+
+.app-mb ul li .ytb:hover {
+
+	background-color: #F42941;
+
+	transform:rotate(360deg);
+
+}
+
+
+
+.app-mb ul li .tw:hover {
+
+	background-color: #00aced;
+
+	transform:rotate(360deg);
+
+}
+
+
+
+#na {
+
+	width: 100%;
+
+	background-color: #30AAD1;
+
+	float: left;
+
+	padding: 10px 0;
+
+}
+
+
+
+#na .navbar {
+
+	margin-bottom: 0;
+
+	border:none;
+
+	box-shadow: none;
+
+	background: none;
+
+}
+
+
+
+.navbar .navbar-nav>li>a {
+
+	color: #666;
+
+	font-size: 15px;
+
+	font-family: oswald;
+
+}
+
+
+
+.navbar-brand {
+
+	color: #F5D272!important;
+
+	font-size: 17px;
+
+	font-family: oswald;
+
+}
+
+
+
+nav ul li .dropdown-menu {
+
+	z-index: 2000;
+
+}
+
+
+
+.form-group input {
+
+	background: url(../images/search-dark.png) no-repeat scroll 4px 8px #fff;
+
+	padding: 0 0 0 20px;
+
+	border-radius: 5px;
+
+}
+
+
+
+.navbar-form button {
+
+	border-radius: 5px;
+
+	background-color: #bbb;
+
+	color: #666;
+
+}
+
+
+
+.login-user {
+
+	width: 100%;
+
+	display: block;
+
+	margin: 20px 0;
+
+}
+
+
+
+.login-user a {
+
+	color: #bbb;
+
+	font-size: 16px;
+
+	float: right;
+
+	margin: 0 auto;
+
+	text-decoration: none;
+
+}
+
+
+
+.login-user a i {
+
+	display: block;
+
+	font-size: 30px;
+
+	color: #bbb;
+
+	width: 100%;
+
+	text-align: center;
+
+	margin: 5px 0;
+
+}
+
+
+
+.login-pop {
+
+	display: block;
+
+	position: relative;
+
+	top: 13px;
+
+}
+
+
+
+.login-pop a { 
+
+    padding: 4px 15px;
+
+	border-radius: 5px;
+
+	background-color: #F5D272;
+
+	color: #666;
+
+	font-weight: bold;
+
+	font-family: oswald;
+
+	font-size: 16px;
+
+	text-decoration: none;
+
+}
+
+
+
+.login-pop a:focus {
+
+	color: #fff!important;
+
+}
+
+
+
+.da-slider {
+
+	min-width: 100%!important;
+
+}
+
+
+
+.modal-dialog {
+
+  margin: 10% auto;
+
+}
+
+
+
+#login-modal .modal-dialog {
+
+    width: 303px;
+
+    padding: 0!important;
+
+}
+
+
+
+#login-modal input[type=text], input[type=password] {
+
+	margin-top: 10px;
+
+}
+
+
+
+#div-login-msg,
+
+#div-lost-msg,
+
+#div-register-msg {
+
+    border: 1px solid #dadfe1;
+
+    height: 30px;
+
+    line-height: 28px;
+
+    transition: all ease-in-out 500ms;
+
+}
+
+
+
+#div-login-msg.success,
+
+#div-lost-msg.success,
+
+#div-register-msg.success {
+
+    border: 1px solid #68c3a3;
+
+    background-color: #c8f7c5;
+
+}
+
+
+
+#div-login-msg.error,
+
+#div-lost-msg.error,
+
+#div-register-msg.error {
+
+    border: 1px solid #eb575b;
+
+    background-color: #ffcad1;
+
+}
+
+
+
+#icon-login-msg,
+
+#icon-lost-msg,
+
+#icon-register-msg {
+
+    width: 30px;
+
+    float: left;
+
+    line-height: 28px;
+
+    text-align: center;
+
+    background-color: #dadfe1;
+
+    margin-right: 5px;
+
+    transition: all ease-in-out 500ms;
+
+}
+
+
+
+#icon-login-msg.success,
+
+#icon-lost-msg.success,
+
+#icon-register-msg.success {
+
+    background-color: #68c3a3 !important;
+
+}
+
+
+
+#icon-login-msg.error,
+
+#icon-lost-msg.error,
+
+#icon-register-msg.error {
+
+    background-color: #eb575b !important;
+
+}
+
+
+
+#img_logo {
+
+    max-height: 100px;
+
+    max-width: 100px;
+
+}
+
+
+
+/* #########################################
+
+   #    override the bootstrap configs     #
+
+   ######################################### */
+
+
+
+.modal-backdrop.in {
+
+    filter: alpha(opacity=50);
+
+    opacity: .8;
+
+}
+
+
+
+.modal-content {
+
+    background-color: #ececec;
+
+    border: 1px solid #bdc3c7;
+
+    border-radius: 0px;
+
+    outline: 0;
+
+    z-index: 7777;
+
+    position: relative;
+
+}
+
+
+
+.modal-header {
+
+    min-height: 16.43px;
+
+    padding: 15px 15px 15px 15px;
+
+    border-bottom: 0px;
+
+}
+
+
+
+.modal-body {
+
+    position: relative;
+
+    padding: 5px 15px 5px 15px;
+
+}
+
+
+
+.modal-footer {
+
+    padding: 15px 15px 15px 15px;
+
+    text-align: left;
+
+    border-top: 0px;
+
+}
+
+
+
+.checkbox {
+
+    margin-bottom: 0px;
+
+}
+
+
+
+.btn {
+
+    border-radius: 0px;
+
+}
+
+
+
+.btn:focus,
+
+.btn:active:focus,
+
+.btn.active:focus,
+
+.btn.focus,
+
+.btn:active.focus,
+
+.btn.active.focus {
+
+    outline: none;
+
+}
+
+
+
+.btn-lg, .btn-group-lg>.btn {
+
+    border-radius: 0px;
+
+}
+
+
+
+.btn-link {
+
+    padding: 5px 10px 0px 0px;
+
+    color: #95a5a6;
+
+}
+
+
+
+.btn-link:hover, .btn-link:focus {
+
+    color: #2c3e50;
+
+    text-decoration: none;
+
+}
+
+
+
+.glyphicon {
+
+    top: 0px;
+
+}
+
+
+
+.form-control {
+
+  border-radius: 0px;
+
+}
+
+
+
+.mm-slideout {
+
+	z-index: inherit!important;
+
+}
+
+
+
+#sv {
+
+	width: 100%;
+
+	display: block;
+
+}
+
+
+
+.service {
+
+	width: 100%;
+
+	display: block;
+
+	border:1px solid #E7E7E7;
+
+	border-radius: 8px;
+
+	float: left;
+
+	padding: 10px;
+
+	margin: 10px 0;
+
+	box-shadow: 5px 5px 5px #E7E7E7;
+
+}
+
+
+
+.service h5 {
+
+	padding: 5px 0;
+
+	color: #666;
+
+	font-family: oswald;
+
+	border-bottom: 1px solid #E7E7E7;
+
+	margin: 0;
+
+}
+
+
+
+.service h5 i {
+
+	color: #30AAD1;
+
+	margin: 1px 5px 0 0;
+
+	display: block;
+
+	float: left;
+
+}
+
+
+
+.right {
+
+	width: 100%;
+
+	display: block;
+
+	
+
+}
+
+
+
+.service a {
+
+	padding: 5px 10px;
+
+	background-color: #30AAD1;
+
+	color: #fff;
+
+	float: right;
+
+	border-radius: 5px;
+
+}
+
+
+
+.service a:hover {
+
+  	background-color: #29a1c4;
+
+  	text-decoration: none;
+
+}
+
+
+
+.dot {
+
+	background:url("../images/dot.png") repeat scroll 0 0 transparent;
+
+	display: block;
+
+	width: 100%;
+
+	float: left;
+
+	padding: 10px 0;
+
+}
+
+
+
+#main {
+
+	width: 100%;
+
+	display: block;
+
+}
+
+
+
+.content {
+
+	width: 100%;
+
+	display: block;
+
+}
+
+
+
+.content h3 {
+
+	margin: 10px 0 15px 0;
+
+	font-family: oswald;
+
+	color: #666;
+
+}
+
+
+
+.content h3 i {
+
+	color: #30AAD1;
+
+	margin: 0 8px 0 0;
+
+}
+
+
+
+.content ul li {
+
+	float: left;
+
+	width: 100%;
+
+	padding: 5px;
+
+	background-color: #f5f5f5;
+
+    border: 1px solid #e3e3e3;
+
+    border-radius: 5px;
+
+    margin: 0 0 5px 0;
+
+}
+
+
+
+.content ul li a {
+
+	color: #30AAD1;
+
+	font-family: oswald;
+
+	font-size: 18px;
+
+}
+
+
+
+.content ul li a:hover {
+
+	color: #29a1c4;
+
+}
+
+
+
+.content ul li i {
+
+	color: #666;
+
+    float: left;
+
+    margin: 3px 5px 0 5px;
+
+    font-size: 17px;
+
+}
+
+
+
+#footer {
+
+	width: 100%;
+
+	display: block;
+
+	background-color: #30AAD1;
+
+	padding: 15px 0;
+
+	text-align: center;
+
+	color: #fff;
+
+	font-family: oswald;
+
+	font-size: 18px;
+
+	margin: 40px 0 0 0;
+
+}
+
+
+
+/*profile*/
+
+.breadcrumb {
+
+	margin: 20px 0;
+
+	width: 100%;
+
+	float: left;
+
+}
+
+
+
+.breadcrumb li a {
+
+	color: #30AAD1;
+
+}
+
+
+
+.content-user {
+
+	display: block;
+
+	width: 100%;
+
+}
+
+
+
+.content-user ul li {
+
+	margin: 0 0 10px 0;
+
+}
+
+
+
+.content-user label, .content-user p {
+
+	display: inline;
+
+}
+
+
+
+.content-user a {
+
+	color: #30AAD1;
+
+}
+
+
+
+.administration {
+
+	width: 100%;
+
+	display: block;
+
+	border: 1px solid #E1E1E1;
+
+	border-radius: 5px;
+
+}
+
+
+
+.administration h3 {
+
+	color: #666;
+
+	font-size: 20px;
+
+	margin: 10px 0;
+
+	font-family: oswald;
+
+}
+
+
+
+.administration h3 i {
+
+	color: #30AAD1;
+
+	margin: 0 10px;
+
+}
+
+
+
+.administration ul li {
+
+	width: 100%;
+
+	margin: 0 0 5px 0;
+
+}
+
+
+
+.administration ul li a {
+
+	color: #30AAD1;
+
+	font-size: 13px;
+
+}
+
+
+
+.administration ul li i {
+
+	color: #666;
+
+    margin: 6px 5px 0 20px;
+
+    float: left;
+
+    font-size: 10px;
+
+}
+
+
+
+/*categories*/
+
+
+
+.categorypicker, .course-view {
+
+	width: 100%;
+
+	float: left;
+
+	border: 1px solid #bbb;
+
+	border-radius: 5px;
+
+	padding: 30px 20px;
+
+}
+
+
+
+.sl-category {
+
+	width: 100%;
+
+	float: left;
+
+	text-align: center;
+
+}
+
+
+
+.name {
+
+	width: 100%;
+
+	float: left;
+
+	margin: 20px 0;
+
+	border: 1px solid #bbb;
+
+	border-radius: 5px;
+
+	padding: 10px;
+
+}
+
+
+
+.name p {
+
+	display: inline;
+
+	color: #30AAD1;
+
+}
+
+
+
+.content-ctg {
+
+	float: left;
+
+	width: 100%;
+
+}
+
+
+
+.content-ctg > ul > li {
+
+	width: 100%;
+
+	margin: 0 0 5px 0;
+
+	border: 1px solid #bbb;
+
+	border-radius: 5px;
+
+	padding: 10px;
+
+}
+
+
+
+.info {
+
+	width: 100%;
+
+	display: block;
+
+}
+
+
+
+.info ul li {
+
+	margin: 0 0 10px 0;
+
+}
+
+
+
+.info ul li .info-ct {
+
+	color: #943b21;
+
+	text-decoration: none;
+
+	font-size: 20px;
+
+	font-family: oswald;
+
+}
+
+
+
+.info ul li .info-ct i {
+
+	float: left;
+
+	color: #30AAD1;
+
+	margin: 4px 10px 0 0;
+
+}
+
+
+
+.info ul li label {
+
+	color: #30AAD1;
+
+	display: inline;
+
+}
+
+
+
+.info ul li a {
+
+	color: #30AAD1;
+
+	text-decoration: none;
+
+}
+
+
+
+.info ul li a:hover {
+
+	color: #6a2a18;
+
+}
+
+
+
+.info-icon {
+
+	float: right;
+
+	color: #bbb;
+
+}
+
+
+
+.info-icon i {
+
+	float: left;
+
+	margin: 0 0 0 10px;
+
+	font-size: 20px;
+
+}
+
+
+
+.course-view2 {
+
+	width: 100%;
+
+    float: left;
+
+    border: 1px solid #bbb;
+
+    border-radius: 5px;
+
+    padding: 30px 20px;
+
+}
+
+
+
+.course-view h2, .course-view2 h2 {
+
+	margin: 0 0 10px 0;
+
+	color: #217a94;
+
+	font-size: 30px;
+
+	font-family: oswald;
+
+	display: block;
+
+	text-align: center;
+
+}
+
+
+
+.course-view ul, .course-view2 ul {
+
+	float: left;
+
+	margin: 20px 0 0 0;
+
+	width: 100%;
+
+}
+
+
+
+.course-view ul li {
+
+	width: 100%;
+
+    float: left;
+
+    margin: 0 0 15px 0;
+
+    text-align: center;
+
+}
+
+
+
+.course-view2 ul li {
+
+	width: 100%;
+
+    float: left;
+
+    margin: 10px 0;
+
+}
+
+
+
+.course-view ul li label, .course-view ul li .filell {
+
+	display: inline-block;
+
+}
+
+
+
+.course-view ul li input {
+
+	width: 32%;
+
+}
+
+
+
+.course-view ul li .sl {
+
+	width: 29%;
+
+}
+
+
+
+.time {
+
+	width: 100%;
+
+	float: left;
+
+	margin: 20px 0;
+
+}
+
+
+
+.time span {
+
+	color: #217a94;
+
+	font-size: 25px;
+
+}
+
+
+
+/*edit-profile*/
+
+
+
+.edit-pf {
+
+	width: 100%;
+
+	float: left;
+
+}
+
+
+
+.edit-pf h2 {
+
+	color: #666;
+
+	margin: 0 0 20px 0;
+
+	font-size: 24px;
+
+	border-bottom: 1px solid #E1E1E1;
+
+	padding: 0 0 15px 0;
+
+}
+
+
+
+.edit-pf form ul li {
+
+	width: 100%;
+
+	float: left;
+
+	margin: 10px 0;
+
+}
+
+
+
+.edit-pf ul li label {
+
+	width: 15%;
+
+}
+
+
+
+.edit-pf ul li input {	
+
+	display: inline;
+
+	width: 65%;
+
+	padding: 3px 5px;
+
+}
+
+
+
+.edit-pf ul li select {
+
+	display: inline;
+
+	width: 200px;
+
+	padding: 5px 0;
+
+}
+
+
+
+.edit-pf > input {
+
+	color: #fff;
+
+    background-color: #04c;
+
+    border-radius: 5px;
+
+    padding: 5px;
+
+    border: 1px solid #04c;
+
+    margin: 25px 0 0 0;
+
+}
+
+
+
+.btn-form {
+
+	margin: 0 auto;
+
+    display: block;
+
+    background-color: #30AAD1;
+
+    color: #fff;
+
+    border-radius: 5px;
+
+    padding: 7px 25px;
+
+    text-transform: uppercase;
+
+    font-size: 18px;
+
+    border: none;
+
+} 
+
+
+
+@media only screen and (max-width: 768px) {
+
+	#login-modal .modal-dialog {
+
+  		width: 100%;
+
+  	}
+
+}
