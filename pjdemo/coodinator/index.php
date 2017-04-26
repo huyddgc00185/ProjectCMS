@@ -6,7 +6,7 @@ session_start();
 
 require_once('../config/connect.php');
 
-if(!isset($_SESSION['username'])||$_SESSION['position']!=1){
+if(!isset($_SESSION['username'])||$_SESSION['position']!=3){
 
 	header('Location: ../index.php');	
 
@@ -306,11 +306,11 @@ $email = $_SESSION['email'];
 
 							</ul>
 
-							<form action="search.php" method="POST" class="navbar-form navbar-left">
+							<form class="navbar-form navbar-left">
 
 								<div class="form-group">
 
-									<input name="searchcate" type="text" class="form-control">
+									<input type="text" class="form-control">
 
 								</div>
 
@@ -440,7 +440,7 @@ $email = $_SESSION['email'];
 
 							<div class="right">
 
-								<a href="categories.php">View</a>
+								<a href="#">View</a>
 
 							</div>
 

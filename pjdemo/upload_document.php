@@ -13,7 +13,7 @@ $folderfile = $_POST['folderfile'];
 	if(isset($_POST['ok'])){ // Người dùng đã ấn submit
       if($_FILES['file']['name'] != NULL){ // Đã chọn file
            // Tiến hành code upload file
-		   if($_FILES['file']['type'] == "application/pdf" ||$_FILES["file"]["type"] == "image/gif"|| $_FILES["file"]["type"] == "image/jpeg"|| $_FILES["file"]["type"] == "image/png"|| $_FILES["file"]["type"] == "image/pjpeg"|| $_FILES['file']['type'] == "application/msword"||$_FILES['file']['type'] == "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
+		   if($_FILES['file']['type'] == "application/pdf"
 			){
 			  // là file ảnh
 			  // Tiến hành code upload

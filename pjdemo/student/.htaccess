@@ -1,0 +1,4 @@
+ErrorDocument 404 http://projectcms.com/errors.html
+RewriteRule ^(.*)\.html$ $1.php [R=301,L]
+RewriteEngine on
+RewriteRule ^product-([0-9]+).html$ courseview.php?idsj=$1&idt=$2

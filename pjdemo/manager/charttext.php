@@ -1,14 +1,24 @@
-<?php
+<?php 
 
 session_start();
 
-
-
 require_once('../config/connect.php');
 
-if(!isset($_SESSION['username'])||$_SESSION['position']!=1){
+if(!isset($_SESSION['username'])||$_SESSION['position']!=4){
 
-	header('Location: ../index.php');	
+	header('Location: ../index.php');
+
+
+
+}else{
+
+	$id =$_SESSION['id'];
+
+      $sqls="SELECT * FROM Account where AccountID = $id";
+
+			$results = mysqli_query($connection,$sqls);
+
+			$row=mysqli_fetch_object($results);
 
 }
 
@@ -20,11 +30,17 @@ $fullname = $_SESSION['fullname'];
 
 $email = $_SESSION['email'];
 
+
+
 ?>
+
+
 
 <!DOCTYPE html>
 
 <html>
+
+
 
 <head>
 
@@ -44,7 +60,8 @@ $email = $_SESSION['email'];
 
     <link rel="shortcut icon" href="../favicon.ico">
 
-
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
 
 	<script src="../jquery/jquery-3.1.1.min.js" type="text/javascript"></script>
 
@@ -68,11 +85,13 @@ $email = $_SESSION['email'];
 
 		$(function() {
 
-			var $modalAnimateTime = 300;
+		    var $modalAnimateTime = 300;
 
 		    var $msgAnimateTime = 150;
 
 		    var $msgShowTime = 2000;
+
+		    
 
 		    function modalAnimate ($oldForm, $newForm) {
 
@@ -240,7 +259,7 @@ $email = $_SESSION['email'];
 
 						<div class="login-user">
 
-							<a href="profile.php"><i class="fa fa-user" aria-hidden="true"></i><?php echo $fullname; ?></a>
+							<a href="profile.php"><i class="fa fa-user" aria-hidden="true"></i><?php echo$fullname;?></a>
 
 						</div>						
 
@@ -276,7 +295,7 @@ $email = $_SESSION['email'];
 
 							</button>
 
-							<a class="navbar-brand" href="#"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
+							<a class="navbar-brand" href="index.php"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
 
 						</div>
 
@@ -306,15 +325,15 @@ $email = $_SESSION['email'];
 
 							</ul>
 
-							<form action="search.php" method="POST" class="navbar-form navbar-left">
+							<form class="navbar-form navbar-left">
 
 								<div class="form-group">
 
-									<input name="searchcate" type="text" class="form-control">
+									<input type="text"  class="form-control">
 
 								</div>
 
-								<button type="submit" class="btn btn-default">Search</button>
+								<button type="submit" class="btn btn-info">Search</button>
 
 							</form>
 
@@ -324,7 +343,7 @@ $email = $_SESSION['email'];
 
 									<div class="login-pop">
 
-				                        <a href="../logout.php"  data-target="#login-modal">Log out</a>
+				                        <a href="../logout.php" class="loginButton" >Log out</a>
 
 				                    </div>
 
@@ -342,223 +361,43 @@ $email = $_SESSION['email'];
 
 		</div>
 
-		<div id="banner">
-
-			<div id="da-slider" class="da-slider">
-
-				<div class="da-slide">
-
-					<h2>Warm welcome</h2>
-
-					<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane.</p>
-
-					<div class="da-img"><img src="../images/1.png" alt="image01" /></div>
-
-				</div>
-
-				<div class="da-slide">
-
-					<h2>Easy management</h2>
-
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-
-					<div class="da-img"><img src="../images/2.png" alt="image01" /></div>
-
-				</div>
-
-				<div class="da-slide">
-
-					<h2>Revolution</h2>
-
-					<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-
-					<div class="da-img"><img src="../images/3.png" alt="image01" /></div>
-
-				</div>
-
-				<div class="da-slide">
-
-					<h2>Quality Control</h2>
-
-					<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-
-					<div class="da-img"><img src="../images/4.png" alt="image01" /></div>
-
-				</div>
-
-				<nav class="da-arrows">
-
-					<span class="da-arrows-prev"></span>
-
-					<span class="da-arrows-next"></span>
-
-				</nav>
-
-			</div>
-
-		</div>
-
-		<div id="sv">
-
-			<div class="container">
-
-				<div class="row">
-
-					<div class="col-md-4 col-sm-4 col-xs-12">
-
-						<div class="service">
-
-							<h5><i class="fa fa-star" aria-hidden="true"></i>Client</h5>
-
-							<div class="image-sv">
-
-								<img src="../images/imgsv.png">
-
-							</div>
-
-							<div class="right">
-
-								<a href="categories.php">View</a>
-
-							</div>
-
-						</div>
-
-					</div>
-
-					<div class="col-md-4 col-sm-4 col-xs-12">
-
-						<div class="service">
-
-							<h5><i class="fa fa-star" aria-hidden="true"></i>Client</h5>
-
-							<div class="image-sv">
-
-								<img src="../images/imgsv.png">
-
-							</div>
-
-							<div class="right">
-
-								<a href="categories.php">View</a>
-
-							</div>
-
-						</div>
-
-					</div>
-
-					<div class="col-md-4 col-sm-4 col-xs-12">
-
-						<div class="service">
-
-							<h5><i class="fa fa-star" aria-hidden="true"></i>Client</h5>
-
-							<div class="image-sv">
-
-								<img src="../images/imgsv.png">
-
-							</div>
-
-							<div class="right">
-
-								<a href="categories.php">View</a>
-
-							</div>
-
-						</div>
-
-					</div>
-
-				</div>
-
-				<div class="dot"></div>
-
-			</div>
-
-		</div>
-
 		<div id="main">
+			<div class="container-fluid">
+				<ol class="breadcrumb">
+					  <li><a href="index.php">Home</a></li>				  
+					  <li class="active">Manager</li>
+					  <li><a href="profile.php">View Profile</a></li>
+				</ol>
+				<div class="row">
+					<div class="col-md-4" >
+					<div id="container1" >
+					<br/>
+					<p></p>
+					<br/>
+					<p></p>
+					<br/>
 
-			<div class="container">
+						Dữ liệu được sắp xếp theo các cột hoặc các hàng trên bảng tính có thể được biểu thị bằng biểu đồ đường. Trong biểu đồ đường, dữ liệu thể loại được phân bổ đều dọc theo trục ngang và tất cả các dữ liệu giá trị được phân bổ đều dọc theo trục dọc. Các biểu đồ đường có thể biểu thị các dữ liệu liên tục theo thời gian trên trục được chia độ đều và vì vậy rất phù hợp để biểu thị các khuynh hướng dữ liệu tại các khoảng thời gian bằng nhau như tháng, quý hoặc năm tài chính.
+					Dữ liệu được sắp xếp theo các cột hoặc các hàng trên bảng tính có thể được biểu thị bằng biểu đồ đường. Trong biểu đồ đường, dữ liệu thể loại được phân bổ đều dọc theo trục ngang và tất cả các dữ liệu giá trị được phân bổ đều dọc theo trục dọc. Các biểu đồ đường có thể biểu thị các dữ liệu liên tục theo thời gian trên trục được chia độ đều và vì vậy rất phù hợp để biểu thị các khuynh hướng dữ liệu tại các khoảng thời gian bằng nhau như tháng, quý hoặc năm tài chính.
+					</div>
 
-				<div class="content">
-
-				<h3><i class="fa fa-briefcase" aria-hidden="true"></i>Courses</h3>
-
-					<ul>
-
-						<li>
-
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="categories.php">Fundamental</a>
-
-						</li>
-
-						<li>
-
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">Examination</a>
-
-						</li>
-
-						<li>
-
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">Software Engineering</a>
-
-						</li>
-
-						<li>
-
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">Greenwich Programme</a>
-
-						</li>
-
-						<li>
-
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">Business Administration</a>
-
-						</li>
-
-						<li>
-
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">International Programs</a>
-
-						</li>
-
-						<li>
-
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">FSchool</a>
-
-						</li>
-
-						<li>
-
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">Master of Software Engineering</a>
-
-						</li>
-
-						<li>
-
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">Professional Certification</a>
-
-						</li>
-
-					</ul>
-
+					</div>
+					<div class="col-md-8">
+					<?php 
+						$sqlcom = "SELECT * FROM studentclaim INNER JOIN subjects on studentclaim.SubjectID = subjects.SubjectID WHERE StudentClaimTime < '2017-05-01 0:0:0' and StudentClaimTime > '2017-04-01 0:0:0' and subjects.SubjectID = '2'";
+						$num = mysqli_query($connection,$sqlcom);
+						$rows = mysqli_num_rows($num);
+						echo$rows;
+					?>
+					</div>
+					
 				</div>
+					
 
 			</div>
-
 		</div>
 
-		<div id="footer">
-
-			<div class="container">
-
-				© 2017 FPT UNIVERSITY
-
-			</div>
-
-		</div>		
+		
 
 	</div>
 

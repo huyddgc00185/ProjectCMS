@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.5.1
+-- version 4.5.2
 -- http://www.phpmyadmin.net
 --
--- Host: 127.0.0.1
--- Generation Time: Mar 25, 2017 at 01:26 AM
--- Server version: 10.1.19-MariaDB
--- PHP Version: 7.0.9
+-- Host: localhost
+-- Generation Time: Apr 26, 2017 at 06:44 AM
+-- Server version: 10.1.16-MariaDB
+-- PHP Version: 5.6.24
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -43,20 +43,19 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`AccountID`, `AccountAcc`, `AccountPassword`, `AccountFullName`, `DateOfBirth`, `AccountAddress`, `AccountEmail`, `PhoneNumber`, `Position`) VALUES
-(1, 'hungntgt00453', '12345', 'NGUYEN TRAN HUNG', '20/5/1993', 'HA NOI', 'hungntgt00453@fpt.edu.vn', '0947874123', '1'),
+(1, 'hungntgt00453', '12345', 'NGUYEN TRAN HUNG', '20/5/1993', 'Ha Noi', 'hungntgt00453@fpt.edu.vn', '0947874123', '1'),
 (2, 'huydd', '12345', 'Duong Duc huy', '11/1/1993', 'Ha Noi', 'huydd@fpt.edu.vn', '0912313212', '1'),
 (3, 'lampt', '12345', 'Pham Tung Lam', '9/11/1993', 'Ha Noi', 'lampt@fpt.edu.vn', '0912999888', '1'),
 (4, 'tuanbq', '12345', 'Bui Quang Tuan', '12/11/1994', 'Ha Noi', 'tuanbq@fpt.edu.vn', '0166789987', '1'),
 (5, 'namlh', '12345', 'Le Hai Nam', '6/1/1994', 'Hai Phong', 'namlh@fpt.edu.vn', '0912596854', '1'),
 (6, 'ducvt', '12345', 'Vu Trung Duc', '23/3/1993', 'Nam Dinh', 'ducvt@fpt.edu.vn', '0912222333', '1'),
 (7, 'duongpt', '12345', 'Pham Tung Duong', '11/7/1992', 'Hai Phong', 'duongpt@fpt.edu.vn', '0987134233', '1'),
-(8, 'bachpt', '12345', 'Pham Tung Bach', '10/3/1995', 'Dien Bien', 'bachpt@fpt.edu.vn', '0981234561', '1'),
-(9, 'tuannv', '12345', 'Nguyen Van Tuan', '20/8/1993', 'Hai Phong', 'tuannv@fpt.edu.vn', '0912086973', '1'),
 (10, 'thanhnv', '12345', 'Nguyen Van Thanh', '29/1/1992', 'Ha Noi', 'thanhnv@fpt.edu.vn', '0166987654', '1'),
-(11, 'minhhv', '12345', 'Hoang Van Minh', '23/2/1992', 'Ha Noi', 'minhhv@fpt.edu.vn', '0912322333', '1'),
 (12, 'tungdt', '12345', 'Doan Trung Tung', '21/2/1970', 'Ha Noi', 'tungdt@fpt.edu.vn', '0912331232', '2'),
 (13, 'vungpv', '12345', 'Pham Van Vung', '05/4/1980', 'Ha Noi', 'vungpv@fpt.edu.vn', '0931288421', '2'),
-(14, 'binhdq', '12345', 'Do Quoc Binh', '06/2/1968', 'Ha Noi', 'binhdq@fpt.edu.vn', '0986878771', '2');
+(14, 'binhdq', '12345', 'Do Quoc Binh', '06/2/1968', 'Ha Noi', 'binhdq@fpt.edu.vn', '0986878771', '2'),
+(15, 'coodinator', '12345', 'HUNG(COODINATOR)', '20/5/1993', 'HA NOI', 'hungntph00695@gmail.com', '0947874123', '3'),
+(17, 'manager', '12345', 'manager', '20/5/1993', 'Ha Noi', 'manager@gmail.com', '0947874123', '4');
 
 -- --------------------------------------------------------
 
@@ -67,59 +66,24 @@ INSERT INTO `account` (`AccountID`, `AccountAcc`, `AccountPassword`, `AccountFul
 CREATE TABLE `classes` (
   `ClassID` int(11) NOT NULL,
   `ClassName` varchar(50) NOT NULL,
-  `SemesterID` int(11) NOT NULL
+  `SemesterID` int(11) NOT NULL,
+  `Timestart` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `classes`
 --
 
-INSERT INTO `classes` (`ClassID`, `ClassName`, `SemesterID`) VALUES
-(1, 'TCH1408', 3),
-(2, 'TCH1409', 2);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `coordinator`
---
-
-CREATE TABLE `coordinator` (
-  `CoordinatorID` int(11) NOT NULL,
-  `Position` varchar(20) NOT NULL,
-  `TeacherID` int(11) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `coordinator`
---
-
-INSERT INTO `coordinator` (`CoordinatorID`, `Position`, `TeacherID`) VALUES
-(1, '3', 2);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `manager`
---
-
-CREATE TABLE `manager` (
-  `ManagerID` int(11) NOT NULL,
-  `ManagerAcc` varchar(50) NOT NULL,
-  `ManagerPassword` varchar(50) NOT NULL,
-  `ManagerFullName` varchar(50) NOT NULL,
-  `ManagerAddress` varchar(100) NOT NULL,
-  `ManagerEmail` varchar(50) NOT NULL,
-  `PhoneNumber` varchar(20) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `manager`
---
-
-INSERT INTO `manager` (`ManagerID`, `ManagerAcc`, `ManagerPassword`, `ManagerFullName`, `ManagerAddress`, `ManagerEmail`, `PhoneNumber`) VALUES
-(1, 'tudm', '12345', 'Do Minh Tu', 'Ha Noi', 'tudmgc00376@fpt.edu.vn', '01667815581'),
-(2, 'hungnt', '12345', 'Nguyen Tran Hung', 'Ha Noi', 'hungnt@fpt.edu.vn', '0912223422');
+INSERT INTO `classes` (`ClassID`, `ClassName`, `SemesterID`, `Timestart`) VALUES
+(1, 'TCH1408', 3, '2017-04-26 00:12:18'),
+(2, 'TCH1409', 2, '2017-04-26 00:12:18'),
+(4, 'TCH1402', 4, '2017-04-26 00:12:18'),
+(5, 'TCH1403', 5, '2017-04-26 00:12:18'),
+(6, 'TCH1404', 6, '2017-04-26 00:12:18'),
+(7, 'TCH1405', 7, '2017-04-26 00:12:18'),
+(8, 'TCH1406', 9, '2017-04-26 00:12:18'),
+(9, 'TCH1407', 9, '2017-04-26 00:12:18'),
+(10, 'TCH1412', 2, '2017-04-26 00:12:18');
 
 -- --------------------------------------------------------
 
@@ -129,16 +93,52 @@ INSERT INTO `manager` (`ManagerID`, `ManagerAcc`, `ManagerPassword`, `ManagerFul
 
 CREATE TABLE `semester` (
   `SemesterID` int(11) NOT NULL,
-  `SemesterNo` varchar(50) NOT NULL
+  `SemesterNo` varchar(50) NOT NULL,
+  `Timestart` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `semester`
 --
 
-INSERT INTO `semester` (`SemesterID`, `SemesterNo`) VALUES
-(2, 'Semester 6'),
-(3, 'Semester 7');
+INSERT INTO `semester` (`SemesterID`, `SemesterNo`, `Timestart`) VALUES
+(2, 'Semester 6', '2017-04-26 00:11:52'),
+(3, 'Semester 7', '2017-04-26 00:11:52'),
+(4, 'Semester 8', '2017-04-26 00:11:52'),
+(5, 'Semester 1', '2017-04-26 00:11:52'),
+(6, 'Semester 2', '2017-04-26 00:11:52'),
+(7, 'Semester 3', '2017-04-26 00:11:52'),
+(8, 'Semester 4', '2017-04-26 00:11:52'),
+(9, 'Semester 5', '2017-04-26 00:11:52'),
+(11, 'Semester 11', '2017-04-26 00:11:52'),
+(12, 'Semester 12', '2017-04-26 00:11:52');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `studentclaim`
+--
+
+CREATE TABLE `studentclaim` (
+  `StudentClaimID` int(11) NOT NULL,
+  `StudentID` int(11) NOT NULL,
+  `StudentClaimSubject` text NOT NULL,
+  `StudentClaimBody` text NOT NULL,
+  `SubjectID` int(11) NOT NULL,
+  `Fileup` text NOT NULL,
+  `StudentClaimTime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `Status` int(11) NOT NULL,
+  `Accepted` int(11) NOT NULL,
+  `OverDeadline` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `studentclaim`
+--
+
+INSERT INTO `studentclaim` (`StudentClaimID`, `StudentID`, `StudentClaimSubject`, `StudentClaimBody`, `SubjectID`, `Fileup`, `StudentClaimTime`, `Status`, `Accepted`, `OverDeadline`) VALUES
+(94, 1, 'body', 'title', 2, '', '2017-06-20 22:41:53', 0, 0, 0),
+(95, 1, 'test1', 'test', 2, '../file_upload/teacher/Screen Shot 2017-04-24 at 12.20.07 PM.png', '2017-04-25 22:45:14', 1, 2, 0);
 
 -- --------------------------------------------------------
 
@@ -163,7 +163,8 @@ INSERT INTO `studentfeedback` (`StudentFeedbackID`, `StudentID`, `TeacherID`, `M
 (4, 1, 13, 'ques1', 'fed1', '2017-03-22 02:06:02'),
 (5, 1, 12, 'Title Fb1', 'content fb1', '2017-03-23 04:06:04'),
 (6, 1, 14, 'Title Fb2', 'content fb2', '2017-03-24 21:59:34'),
-(7, 1, 12, 'Title Fb3', 'content fb3', '2017-03-24 21:59:55');
+(7, 1, 12, 'Title Fb3', 'content fb3', '2017-03-24 21:59:55'),
+(8, 1, 0, '', '', '2017-03-25 19:27:04');
 
 -- --------------------------------------------------------
 
@@ -182,8 +183,13 @@ CREATE TABLE `studentintosubject` (
 --
 
 INSERT INTO `studentintosubject` (`StudentIntoSubjectID`, `StudentID`, `SubjectID`) VALUES
-(1, 1, 1),
-(2, 2, 3);
+(2, 5, 3),
+(3, 1, 2),
+(4, 1, 3),
+(9, 5, 4),
+(6, 1, 4),
+(7, 2, 2),
+(10, 2, 4);
 
 -- --------------------------------------------------------
 
@@ -210,7 +216,9 @@ INSERT INTO `studentupload` (`UploadID`, `SubjectID`, `StudentID`, `Name`, `Link
 (35, 3, 1, '3', '../file_upload/student/CW.pdf', '2017-05-17 09:32:00'),
 (34, 3, 1, '2', '../file_upload/student/CW.pdf', '2017-06-16 09:32:00'),
 (32, 3, 1, '3', '../file_upload/student/CW.pdf', '2017-09-14 09:32:00'),
-(33, 3, 1, 'xong', '../file_upload/student/CW.pdf', '2017-06-23 09:42:08');
+(33, 3, 1, 'xong', '../file_upload/student/CW.pdf', '2017-06-23 09:42:08'),
+(38, 2, 1, 'Application Development for Mobile Devices CW', '../file_upload/student/CW.pdf', '2017-04-02 20:14:29'),
+(39, 4, 2, 'TCH1408 - Project', '../file_upload/student/CW.pdf', '2017-04-02 20:31:38');
 
 -- --------------------------------------------------------
 
@@ -222,44 +230,24 @@ CREATE TABLE `subjects` (
   `SubjectID` int(11) NOT NULL,
   `SubjectName` varchar(150) NOT NULL,
   `ClassID` int(11) NOT NULL,
-  `AccountID` int(11) NOT NULL
+  `AccountID` int(11) NOT NULL,
+  `Timestart` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 --
 -- Dumping data for table `subjects`
 --
 
-INSERT INTO `subjects` (`SubjectID`, `SubjectName`, `ClassID`, `AccountID`) VALUES
-(1, 'Interaction Design', 1, 14),
-(2, 'Application Development for Mobile Devices', 1, 13),
-(3, 'Enterprise Web Software Development', 1, 12),
-(4, 'Project', 1, 12);
-
--- --------------------------------------------------------
-
---
--- Table structure for table `teacher`
---
-
-CREATE TABLE `teacher` (
-  `TeacherID` int(11) NOT NULL,
-  `TeacherAcc` varchar(50) NOT NULL,
-  `TeacherPassword` varchar(50) NOT NULL,
-  `TeacherFullName` varchar(50) NOT NULL,
-  `TeacherAddress` varchar(100) NOT NULL,
-  `TeacherEmail` varchar(50) NOT NULL,
-  `PhoneNumber` varchar(20) NOT NULL,
-  `Position` varchar(20) NOT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8;
-
---
--- Dumping data for table `teacher`
---
-
-INSERT INTO `teacher` (`TeacherID`, `TeacherAcc`, `TeacherPassword`, `TeacherFullName`, `TeacherAddress`, `TeacherEmail`, `PhoneNumber`, `Position`) VALUES
-(1, 'tungdt', '12345', 'Doan Trung Tung', 'Ha Noi', 'tungdt@fpt.edu.vn', '0912331232', '2'),
-(2, 'vungpv', '12345', 'Pham Van Vung', 'Ha Noi', 'vungpv@fpt.edu.vn', '0931288421', '2'),
-(3, 'binhdq', '12345', 'Do Quoc Binh', 'Ha Noi', 'binhdq@fpt.edu.vn', '0986878771', '2');
+INSERT INTO `subjects` (`SubjectID`, `SubjectName`, `ClassID`, `AccountID`, `Timestart`) VALUES
+(1, 'Interaction Design', 1, 14, '2017-04-25 23:52:20'),
+(2, 'Application Development for Mobile', 1, 12, '2017-12-25 23:52:20'),
+(3, 'Enterprise Web Software Development', 1, 12, '2017-04-25 23:52:20'),
+(4, 'Project', 1, 12, '2017-04-25 23:52:20'),
+(7, 'Programing Net Work', 2, 13, '2017-04-25 23:52:20'),
+(8, 'Developer Net Work', 5, 14, '2017-04-25 23:52:20'),
+(9, 'NetWorking', 1, 12, '2017-04-25 23:52:20'),
+(10, 'SoftWare NetWorking', 1, 12, '2017-04-25 23:52:20'),
+(11, 'Interaction Developing', 1, 14, '2017-04-25 23:52:20');
 
 -- --------------------------------------------------------
 
@@ -304,22 +292,16 @@ ALTER TABLE `classes`
   ADD PRIMARY KEY (`ClassID`);
 
 --
--- Indexes for table `coordinator`
---
-ALTER TABLE `coordinator`
-  ADD PRIMARY KEY (`CoordinatorID`);
-
---
--- Indexes for table `manager`
---
-ALTER TABLE `manager`
-  ADD PRIMARY KEY (`ManagerID`);
-
---
 -- Indexes for table `semester`
 --
 ALTER TABLE `semester`
   ADD PRIMARY KEY (`SemesterID`);
+
+--
+-- Indexes for table `studentclaim`
+--
+ALTER TABLE `studentclaim`
+  ADD PRIMARY KEY (`StudentClaimID`);
 
 --
 -- Indexes for table `studentfeedback`
@@ -346,12 +328,6 @@ ALTER TABLE `subjects`
   ADD PRIMARY KEY (`SubjectID`);
 
 --
--- Indexes for table `teacher`
---
-ALTER TABLE `teacher`
-  ADD PRIMARY KEY (`TeacherID`);
-
---
 -- Indexes for table `teacherupload`
 --
 ALTER TABLE `teacherupload`
@@ -365,52 +341,42 @@ ALTER TABLE `teacherupload`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `AccountID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `AccountID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT for table `classes`
 --
 ALTER TABLE `classes`
-  MODIFY `ClassID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
---
--- AUTO_INCREMENT for table `coordinator`
---
-ALTER TABLE `coordinator`
-  MODIFY `CoordinatorID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
---
--- AUTO_INCREMENT for table `manager`
---
-ALTER TABLE `manager`
-  MODIFY `ManagerID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `ClassID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `semester`
 --
 ALTER TABLE `semester`
-  MODIFY `SemesterID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `SemesterID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+--
+-- AUTO_INCREMENT for table `studentclaim`
+--
+ALTER TABLE `studentclaim`
+  MODIFY `StudentClaimID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=96;
 --
 -- AUTO_INCREMENT for table `studentfeedback`
 --
 ALTER TABLE `studentfeedback`
-  MODIFY `StudentFeedbackID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `StudentFeedbackID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 --
 -- AUTO_INCREMENT for table `studentintosubject`
 --
 ALTER TABLE `studentintosubject`
-  MODIFY `StudentIntoSubjectID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `StudentIntoSubjectID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 --
 -- AUTO_INCREMENT for table `studentupload`
 --
 ALTER TABLE `studentupload`
-  MODIFY `UploadID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `UploadID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 --
 -- AUTO_INCREMENT for table `subjects`
 --
 ALTER TABLE `subjects`
-  MODIFY `SubjectID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
---
--- AUTO_INCREMENT for table `teacher`
---
-ALTER TABLE `teacher`
-  MODIFY `TeacherID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `SubjectID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 --
 -- AUTO_INCREMENT for table `teacherupload`
 --

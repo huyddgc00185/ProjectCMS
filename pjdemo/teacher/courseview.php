@@ -289,6 +289,35 @@ $email = $_SESSION['email'];
 								<span>Upload</span>
 							</a>
 						</li>
+						<li>								
+								<span>File coursework By student upload</span>
+							
+						</li>
+						<table  class="table text-center">
+							<tr >
+								<td >Stt</td>
+								<td style="width: 350px">Student</td>
+								<td style="width: 350px">Title</td>
+								<td style="width: 100px">File</td>
+								<td style="width: 300px">time</td>
+
+							</tr>
+							<?php
+								$sqlk = "SELECT * FROM studentupload join account on studentupload.StudentID = account.AccountID where SubjectID = $idsj ";
+								$resultk = mysqli_query($connection,$sqlk);
+								$ik = 0;
+								while ($rowk = mysqli_fetch_object($resultk)) {
+									$ik++;?>
+									<tr >
+										<td><?php echo$ik?></td>
+										<td><?php echo$rowk->AccountFullName?></td>
+										<td><?php echo$rowk->Name?></td>
+										<td><a href="<?php echo$rowk->LinkUpload?>">File</a></td>
+										<td><?php echo$rowk->TimeUpload?></td>
+									</tr>
+								<?php }	?>
+							
+						</table>
 						<div class="dot"></div>
 						<div class="time">
 							<span>11 January - 17 March

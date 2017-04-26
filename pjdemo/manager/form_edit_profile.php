@@ -1,14 +1,24 @@
-<?php
+<?php 
 
 session_start();
 
-
-
 require_once('../config/connect.php');
 
-if(!isset($_SESSION['username'])||$_SESSION['position']!=1){
+if(!isset($_SESSION['username'])||$_SESSION['position']!=4){
 
-	header('Location: ../index.php');	
+	header('Location: ../index.php');
+
+
+
+}else{
+
+	$id =$_SESSION['id'];
+
+      $sqls="SELECT * FROM account where AccountID = $id";
+
+			$results = mysqli_query($connection,$sqls);
+
+			$row=mysqli_fetch_object($results);
 
 }
 
@@ -20,11 +30,17 @@ $fullname = $_SESSION['fullname'];
 
 $email = $_SESSION['email'];
 
+
+
 ?>
+
+
 
 <!DOCTYPE html>
 
 <html>
+
+
 
 <head>
 
@@ -68,11 +84,13 @@ $email = $_SESSION['email'];
 
 		$(function() {
 
-			var $modalAnimateTime = 300;
+		    var $modalAnimateTime = 300;
 
 		    var $msgAnimateTime = 150;
 
 		    var $msgShowTime = 2000;
+
+		    
 
 		    function modalAnimate ($oldForm, $newForm) {
 
@@ -240,7 +258,7 @@ $email = $_SESSION['email'];
 
 						<div class="login-user">
 
-							<a href="profile.php"><i class="fa fa-user" aria-hidden="true"></i><?php echo $fullname; ?></a>
+							<a href="profile.php"><i class="fa fa-user" aria-hidden="true"></i><?php echo$fullname;?></a>
 
 						</div>						
 
@@ -276,7 +294,7 @@ $email = $_SESSION['email'];
 
 							</button>
 
-							<a class="navbar-brand" href="#"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
+							<a class="navbar-brand" href="index.php"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
 
 						</div>
 
@@ -306,15 +324,15 @@ $email = $_SESSION['email'];
 
 							</ul>
 
-							<form action="search.php" method="POST" class="navbar-form navbar-left">
+							<form class="navbar-form navbar-left">
 
 								<div class="form-group">
 
-									<input name="searchcate" type="text" class="form-control">
+									<input type="text"  class="form-control">
 
 								</div>
 
-								<button type="submit" class="btn btn-default">Search</button>
+								<button type="submit" class="btn btn-info">Search</button>
 
 							</form>
 
@@ -324,7 +342,7 @@ $email = $_SESSION['email'];
 
 									<div class="login-pop">
 
-				                        <a href="../logout.php"  data-target="#login-modal">Log out</a>
+				                        <a href="../logout.php" class="loginButton" role="button" >Log out</a>
 
 				                    </div>
 
@@ -342,207 +360,217 @@ $email = $_SESSION['email'];
 
 		</div>
 
-		<div id="banner">
-
-			<div id="da-slider" class="da-slider">
-
-				<div class="da-slide">
-
-					<h2>Warm welcome</h2>
-
-					<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane.</p>
-
-					<div class="da-img"><img src="../images/1.png" alt="image01" /></div>
-
-				</div>
-
-				<div class="da-slide">
-
-					<h2>Easy management</h2>
-
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-
-					<div class="da-img"><img src="../images/2.png" alt="image01" /></div>
-
-				</div>
-
-				<div class="da-slide">
-
-					<h2>Revolution</h2>
-
-					<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-
-					<div class="da-img"><img src="../images/3.png" alt="image01" /></div>
-
-				</div>
-
-				<div class="da-slide">
-
-					<h2>Quality Control</h2>
-
-					<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-
-					<div class="da-img"><img src="../images/4.png" alt="image01" /></div>
-
-				</div>
-
-				<nav class="da-arrows">
-
-					<span class="da-arrows-prev"></span>
-
-					<span class="da-arrows-next"></span>
-
-				</nav>
-
-			</div>
-
-		</div>
-
-		<div id="sv">
-
-			<div class="container">
-
-				<div class="row">
-
-					<div class="col-md-4 col-sm-4 col-xs-12">
-
-						<div class="service">
-
-							<h5><i class="fa fa-star" aria-hidden="true"></i>Client</h5>
-
-							<div class="image-sv">
-
-								<img src="../images/imgsv.png">
-
-							</div>
-
-							<div class="right">
-
-								<a href="categories.php">View</a>
-
-							</div>
-
-						</div>
-
-					</div>
-
-					<div class="col-md-4 col-sm-4 col-xs-12">
-
-						<div class="service">
-
-							<h5><i class="fa fa-star" aria-hidden="true"></i>Client</h5>
-
-							<div class="image-sv">
-
-								<img src="../images/imgsv.png">
-
-							</div>
-
-							<div class="right">
-
-								<a href="categories.php">View</a>
-
-							</div>
-
-						</div>
-
-					</div>
-
-					<div class="col-md-4 col-sm-4 col-xs-12">
-
-						<div class="service">
-
-							<h5><i class="fa fa-star" aria-hidden="true"></i>Client</h5>
-
-							<div class="image-sv">
-
-								<img src="../images/imgsv.png">
-
-							</div>
-
-							<div class="right">
-
-								<a href="categories.php">View</a>
-
-							</div>
-
-						</div>
-
-					</div>
-
-				</div>
-
-				<div class="dot"></div>
-
-			</div>
-
-		</div>
-
 		<div id="main">
 
 			<div class="container">
 
-				<div class="content">
+				<ol class="breadcrumb">
 
-				<h3><i class="fa fa-briefcase" aria-hidden="true"></i>Courses</h3>
+				  
 
-					<ul>
+				  
 
-						<li>
+				</ol>
 
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="categories.php">Fundamental</a>
+				<div class="edit-pf">
 
-						</li>
+					<h2><?php echo$row->AccountFullName ?>(FGR HN)</h2>
 
-						<li>
+					<div class="row">
 
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">Examination</a>
+						<div class="col-md-8">
 
-						</li>
+							<form class="form-signin" method="POST" enctype="multipart/form-data" action="edit_profile.php?id=<?php echo $row->AccountID ?>">
 
-						<li>
+								<ul>
 
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">Software Engineering</a>
+									<li>
 
-						</li>
+										<label>
 
-						<li>
+											Account:
 
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">Greenwich Programme</a>
+											<img src="http://cms.fpt.edu.vn/elearning/theme/image.php/essential/core/1486604992/req"> :
 
-						</li>
+										</label>
 
-						<li>
+										<b><?php echo$row->AccountAcc ?></b>
 
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">Business Administration</a>
+									</li>
 
-						</li>
+									<li>
 
-						<li>
+										<label>
 
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">International Programs</a>
+											Name
 
-						</li>
+											<img src="http://cms.fpt.edu.vn/elearning/theme/image.php/essential/core/1486604992/req"> :
 
-						<li>
+										</label>
 
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">FSchool</a>
+										<b><?php echo$row->AccountFullName ?></b>
 
-						</li>
+										
 
-						<li>
+									</li>
 
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">Master of Software Engineering</a>
+									<li>
 
-						</li>
+										<label>
 
-						<li>
+											Position:
 
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">Professional Certification</a>
+											<img src="http://cms.fpt.edu.vn/elearning/theme/image.php/essential/core/1486604992/req"> :
 
-						</li>
+										</label>
 
-					</ul>
+									<b><?php  
+
+										$a =$row->Position;
+
+										if($a ==1){
+
+											echo"Student";
+
+										}else if($a==2){
+
+											echo "Teacher";
+
+										}else if($a==3){
+
+											echo "Coordinator";
+
+										}else if($a==2){
+
+											echo "Manager";
+
+										}
+
+
+
+										 ?></b>
+
+									</li>
+
+									
+
+									
+
+									<li>
+
+										<label>
+
+											Email
+
+											<img src="http://cms.fpt.edu.vn/elearning/theme/image.php/essential/core/1486604992/req"> :
+
+										</label>
+
+										<input type="email" name="email" id="inputEmail" class="form-control" value="<?php echo $row->AccountEmail ?>" placeholder="Email address" required autofocus>
+
+									</li>
+
+									<li>
+
+										<label>
+
+											Password:
+
+											<img src="http://cms.fpt.edu.vn/elearning/theme/image.php/essential/core/1486604992/req"> :
+
+										</label>
+
+										<input type="text" name="password" id="inputPassword" value="<?php echo ($row->AccountPassword) ?>" class="form-control" placeholder="Password" required>
+
+									</li>
+
+									<li>
+
+										<label>
+
+											Address:
+
+											<img src="http://cms.fpt.edu.vn/elearning/theme/image.php/essential/core/1486604992/req"> :
+
+										</label>
+
+										<input type="text" name="address" value="<?php echo ($row->AccountAddress) ?>" class="form-control"  required>
+
+									</li>
+
+									<li>
+
+										<label>
+
+											Phone:
+
+											<img src="http://cms.fpt.edu.vn/elearning/theme/image.php/essential/core/1486604992/req"> :
+
+										</label>
+
+										<input type="text" name="phone" value="<?php echo ($row->PhoneNumber) ?>" class="form-control" required>
+
+									</li>
+
+									<li>
+
+										<label>
+
+											Date of birth:
+
+											<img src="http://cms.fpt.edu.vn/elearning/theme/image.php/essential/core/1486604992/req"> :
+
+										</label>
+
+										<input class="form-control" id="date" value="<?php echo ($row->DateOfBirth) ?>" name="day"  type="text"/>
+
+									</li>
+
+								</ul>
+
+								<button class="btn-form" type="submit" name="ok">edit</button>
+
+							</form>
+
+						</div>
+
+						<div class="col-md-4">
+
+							<div class="administration">
+
+								<h3><i class="fa fa-cogs" aria-hidden="true"></i>MANAGER INFORMATION</h3>
+
+								<ul>
+
+									<li>
+
+										<i class="fa fa-circle-o" aria-hidden="true"></i><a href="form_edit_profile.php">Edit profile</a>
+
+									</li>
+
+									<li><i class="fa fa-circle-o" aria-hidden="true"></i><a href="viewclaim.php">View Claim</a>
+
+																			
+
+									</li>
+
+										
+
+									</li>
+
+									<li>
+
+										<i class="fa fa-circle-o" aria-hidden="true"></i><a href="viewall.php">Manager view all</a>
+
+									</li>
+
+								</ul>
+
+							</div>
+
+						</div>
+
+					</div>
 
 				</div>
 
@@ -558,9 +586,11 @@ $email = $_SESSION['email'];
 
 			</div>
 
-		</div>		
+		</div>	
 
 	</div>
+
+
 
 </body>
 

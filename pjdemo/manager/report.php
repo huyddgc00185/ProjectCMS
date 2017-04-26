@@ -1,14 +1,24 @@
-<?php
+<?php 
 
 session_start();
 
-
-
 require_once('../config/connect.php');
 
-if(!isset($_SESSION['username'])||$_SESSION['position']!=1){
+if(!isset($_SESSION['username'])||$_SESSION['position']!=4){
 
-	header('Location: ../index.php');	
+	header('Location: ../index.php');
+
+
+
+}else{
+
+	$id =$_SESSION['id'];
+
+      $sqls="SELECT * FROM Account where AccountID = $id";
+
+			$results = mysqli_query($connection,$sqls);
+
+			$row=mysqli_fetch_object($results);
 
 }
 
@@ -20,11 +30,17 @@ $fullname = $_SESSION['fullname'];
 
 $email = $_SESSION['email'];
 
+
+
 ?>
+
+
 
 <!DOCTYPE html>
 
 <html>
+
+
 
 <head>
 
@@ -44,7 +60,8 @@ $email = $_SESSION['email'];
 
     <link rel="shortcut icon" href="../favicon.ico">
 
-
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
 
 	<script src="../jquery/jquery-3.1.1.min.js" type="text/javascript"></script>
 
@@ -68,11 +85,13 @@ $email = $_SESSION['email'];
 
 		$(function() {
 
-			var $modalAnimateTime = 300;
+		    var $modalAnimateTime = 300;
 
 		    var $msgAnimateTime = 150;
 
 		    var $msgShowTime = 2000;
+
+		    
 
 		    function modalAnimate ($oldForm, $newForm) {
 
@@ -240,7 +259,7 @@ $email = $_SESSION['email'];
 
 						<div class="login-user">
 
-							<a href="profile.php"><i class="fa fa-user" aria-hidden="true"></i><?php echo $fullname; ?></a>
+							<a href="profile.php"><i class="fa fa-user" aria-hidden="true"></i><?php echo$fullname;?></a>
 
 						</div>						
 
@@ -276,7 +295,7 @@ $email = $_SESSION['email'];
 
 							</button>
 
-							<a class="navbar-brand" href="#"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
+							<a class="navbar-brand" href="index.php"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
 
 						</div>
 
@@ -306,15 +325,15 @@ $email = $_SESSION['email'];
 
 							</ul>
 
-							<form action="search.php" method="POST" class="navbar-form navbar-left">
+							<form class="navbar-form navbar-left">
 
 								<div class="form-group">
 
-									<input name="searchcate" type="text" class="form-control">
+									<input type="text"  class="form-control">
 
 								</div>
 
-								<button type="submit" class="btn btn-default">Search</button>
+								<button type="submit" class="btn btn-info">Search</button>
 
 							</form>
 
@@ -324,7 +343,7 @@ $email = $_SESSION['email'];
 
 									<div class="login-pop">
 
-				                        <a href="../logout.php"  data-target="#login-modal">Log out</a>
+				                        <a href="../logout.php" class="loginButton" >Log out</a>
 
 				                    </div>
 
@@ -342,223 +361,120 @@ $email = $_SESSION['email'];
 
 		</div>
 
-		<div id="banner">
-
-			<div id="da-slider" class="da-slider">
-
-				<div class="da-slide">
-
-					<h2>Warm welcome</h2>
-
-					<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane.</p>
-
-					<div class="da-img"><img src="../images/1.png" alt="image01" /></div>
-
-				</div>
-
-				<div class="da-slide">
-
-					<h2>Easy management</h2>
-
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-
-					<div class="da-img"><img src="../images/2.png" alt="image01" /></div>
-
-				</div>
-
-				<div class="da-slide">
-
-					<h2>Revolution</h2>
-
-					<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-
-					<div class="da-img"><img src="../images/3.png" alt="image01" /></div>
-
-				</div>
-
-				<div class="da-slide">
-
-					<h2>Quality Control</h2>
-
-					<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-
-					<div class="da-img"><img src="../images/4.png" alt="image01" /></div>
-
-				</div>
-
-				<nav class="da-arrows">
-
-					<span class="da-arrows-prev"></span>
-
-					<span class="da-arrows-next"></span>
-
-				</nav>
-
-			</div>
-
-		</div>
-
-		<div id="sv">
-
-			<div class="container">
-
-				<div class="row">
-
-					<div class="col-md-4 col-sm-4 col-xs-12">
-
-						<div class="service">
-
-							<h5><i class="fa fa-star" aria-hidden="true"></i>Client</h5>
-
-							<div class="image-sv">
-
-								<img src="../images/imgsv.png">
-
-							</div>
-
-							<div class="right">
-
-								<a href="categories.php">View</a>
-
-							</div>
-
-						</div>
-
-					</div>
-
-					<div class="col-md-4 col-sm-4 col-xs-12">
-
-						<div class="service">
-
-							<h5><i class="fa fa-star" aria-hidden="true"></i>Client</h5>
-
-							<div class="image-sv">
-
-								<img src="../images/imgsv.png">
-
-							</div>
-
-							<div class="right">
-
-								<a href="categories.php">View</a>
-
-							</div>
-
-						</div>
-
-					</div>
-
-					<div class="col-md-4 col-sm-4 col-xs-12">
-
-						<div class="service">
-
-							<h5><i class="fa fa-star" aria-hidden="true"></i>Client</h5>
-
-							<div class="image-sv">
-
-								<img src="../images/imgsv.png">
-
-							</div>
-
-							<div class="right">
-
-								<a href="categories.php">View</a>
-
-							</div>
-
-						</div>
-
-					</div>
-
-				</div>
-
-				<div class="dot"></div>
-
-			</div>
-
-		</div>
-
 		<div id="main">
+			<div class="container-fluid">
+				<ol class="breadcrumb">
+					  <li><a href="index.php">Home</a></li>				  
+					  <li class="active">Manager</li>
+					  <li><a href="profile.php">View Profile</a></li>
+				</ol>
+				<div class="row">
+					<div class="col-md-4" >
+					<div id="container1" >
+					<br/>
+					<p></p>
+					<br/>
+					<p></p>
+					<br/>
 
-			<div class="container">
+						This comparsion is showing how many CLAIM is sent in each subject.
+The purpose of this comparsion is compare how many Claim existed in each subject.
+Manager can view the comparsion to evaluate the problem in here. If the Claim is just 1 or 2 Claim, it reflect is everything is fine. But if the Claim appear too much in any subject, it reflect that we got a problems in here, why too many students send Claim to this subject. From that, Manager will meet the Coordinator, Teacher of this subject to dicuss, exchange and give out the solution to solve the problem is existing.
+					</div>
 
-				<div class="content">
+					</div>
+					<div class="col-md-8">
+					<div id="container2" style="min-width: 800px; height: 400px; max-width: 600px; margin: 0 auto" >
 
-				<h3><i class="fa fa-briefcase" aria-hidden="true"></i>Courses</h3>
+					<?php 
+						$notevident = mysqli_num_rows(mysqli_query($connection,('SELECT * FROM `studentclaim` WHERE Fileup =""')));
+						$notaccept = mysqli_num_rows(mysqli_query($connection,('SELECT * FROM `studentclaim` WHERE Status ="1" and Accepted ="2"')));
+						$accept = mysqli_num_rows(mysqli_query($connection,('SELECT * FROM `studentclaim` WHERE Status ="1" and Accepted ="1"')));
+						
+						$sqlover = "SELECT * FROM `studentclaim` WHERE Status ='0' and Accepted ='0'";
+						$resultover = mysqli_query($connection,$sqlover);
+						$over14 = 0;
+						$waiting =0;
+						while ($rowsover = mysqli_fetch_object($resultover)) {
+							$date_upload = strtotime($rowsover->StudentClaimTime);
+							$date_deadline = strtotime(date('Y-m-d'));
+							$datediff = abs($date_deadline-$date_upload);
+							$daypass = floor($datediff / (60*60*24));
+							if($daypass >14){
+								$over14 = $over14 + 1;
+							}
+							if($daypass<14){
+								$waiting = $waiting+1;
+							}
+							
+						}
 
-					<ul>
-
-						<li>
-
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="categories.php">Fundamental</a>
-
-						</li>
-
-						<li>
-
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">Examination</a>
-
-						</li>
-
-						<li>
-
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">Software Engineering</a>
-
-						</li>
-
-						<li>
-
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">Greenwich Programme</a>
-
-						</li>
-
-						<li>
-
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">Business Administration</a>
-
-						</li>
-
-						<li>
-
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">International Programs</a>
-
-						</li>
-
-						<li>
-
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">FSchool</a>
-
-						</li>
-
-						<li>
-
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">Master of Software Engineering</a>
-
-						</li>
-
-						<li>
-
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">Professional Certification</a>
-
-						</li>
-
-					</ul>
-
+						$total = $notaccept + $notevident + $accept +$waiting + $over14;
+						$notevidentpersen = ($notevident *100)/$total;
+						$notacceptpersen = ($notaccept*100)/$total;
+						$acceptpersen = ($accept *100)/$total;
+						$waitingpersen = ($waiting *100)/$total;
+						$over14persen = ($over14 *100)/$total;
+					?>
+					<script type="text/javascript">
+							 Highcharts.chart('container2', {
+							    chart: {
+							        plotBackgroundColor: null,
+							        plotBorderWidth: null,
+							        plotShadow: false,
+							        type: 'pie'
+							    },
+							    title: {
+							        text: 'Browser market shares January, 2015 to May, 2015'
+							    },
+							    tooltip: {
+							        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+							    },
+							    plotOptions: {
+							        pie: {
+							            allowPointSelect: true,
+							            cursor: 'pointer',
+							            dataLabels: {
+							                enabled: true,
+							                format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+							                style: {
+							                    color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
+							                }
+							            }
+							        }
+							    },
+							    series: [{
+							        name: 'Brands',
+							        colorByPoint: true,
+							        data: [{
+							            name: 'so claim ko được chấp nhận ',
+							            y: <?php echo$notacceptpersen ?>
+							        }, {
+							            name: 'số claim quá hạn 14 ngày',
+							            y: <?php echo$over14persen ?>
+							        }, {
+							            name: 'số claim ko evident',
+							            y: <?php echo$notevidentpersen ?>
+							        },{
+							            name: 'số claim được chấp nhận',
+							            y: <?php echo$acceptpersen ?>
+							        },{
+							            name: 'số claim Chưa giải quyết',
+							            y: <?php echo$waitingpersen ?>
+							        }]
+							    }]
+							});
+						</script>		
+					</div>
+					</div>
+					
 				</div>
+					
 
 			</div>
-
 		</div>
 
-		<div id="footer">
-
-			<div class="container">
-
-				© 2017 FPT UNIVERSITY
-
-			</div>
-
-		</div>		
+		
 
 	</div>
 

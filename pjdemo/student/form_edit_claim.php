@@ -8,9 +8,13 @@ require_once('../config/connect.php');
 
 if(!isset($_SESSION['username'])||$_SESSION['position']!=1){
 
-	header('Location: ../index.php');	
+	header('Location: ../index.php');
+
+	
 
 }
+
+     
 
 $id =$_SESSION['id'];
 
@@ -19,6 +23,16 @@ $name = $_SESSION['username'];
 $fullname = $_SESSION['fullname'];
 
 $email = $_SESSION['email'];
+
+
+
+ $sqls="SELECT * FROM Account where AccountID = $id";
+
+			$results = mysqli_query($connection,$sqls);
+
+			$row=mysqli_fetch_object($results);
+
+
 
 ?>
 
@@ -240,7 +254,7 @@ $email = $_SESSION['email'];
 
 						<div class="login-user">
 
-							<a href="profile.php"><i class="fa fa-user" aria-hidden="true"></i><?php echo $fullname; ?></a>
+							<a href="profile.php"><i class="fa fa-user" aria-hidden="true"></i><?php echo $fullname ;?></a>
 
 						</div>						
 
@@ -276,7 +290,7 @@ $email = $_SESSION['email'];
 
 							</button>
 
-							<a class="navbar-brand" href="#"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
+							<a class="navbar-brand" href="../index.php"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
 
 						</div>
 
@@ -306,6 +320,7 @@ $email = $_SESSION['email'];
 
 							</ul>
 
+							
 							<form action="search.php" method="POST" class="navbar-form navbar-left">
 
 								<div class="form-group">
@@ -324,7 +339,7 @@ $email = $_SESSION['email'];
 
 									<div class="login-pop">
 
-				                        <a href="../logout.php"  data-target="#login-modal">Log out</a>
+				                         <a href="../logout.php"  data-target="#login-modal">Log out</a>
 
 				                    </div>
 
@@ -342,207 +357,151 @@ $email = $_SESSION['email'];
 
 		</div>
 
-		<div id="banner">
-
-			<div id="da-slider" class="da-slider">
-
-				<div class="da-slide">
-
-					<h2>Warm welcome</h2>
-
-					<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane.</p>
-
-					<div class="da-img"><img src="../images/1.png" alt="image01" /></div>
-
-				</div>
-
-				<div class="da-slide">
-
-					<h2>Easy management</h2>
-
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-
-					<div class="da-img"><img src="../images/2.png" alt="image01" /></div>
-
-				</div>
-
-				<div class="da-slide">
-
-					<h2>Revolution</h2>
-
-					<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-
-					<div class="da-img"><img src="../images/3.png" alt="image01" /></div>
-
-				</div>
-
-				<div class="da-slide">
-
-					<h2>Quality Control</h2>
-
-					<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-
-					<div class="da-img"><img src="../images/4.png" alt="image01" /></div>
-
-				</div>
-
-				<nav class="da-arrows">
-
-					<span class="da-arrows-prev"></span>
-
-					<span class="da-arrows-next"></span>
-
-				</nav>
-
-			</div>
-
-		</div>
-
-		<div id="sv">
-
-			<div class="container">
-
-				<div class="row">
-
-					<div class="col-md-4 col-sm-4 col-xs-12">
-
-						<div class="service">
-
-							<h5><i class="fa fa-star" aria-hidden="true"></i>Client</h5>
-
-							<div class="image-sv">
-
-								<img src="../images/imgsv.png">
-
-							</div>
-
-							<div class="right">
-
-								<a href="categories.php">View</a>
-
-							</div>
-
-						</div>
-
-					</div>
-
-					<div class="col-md-4 col-sm-4 col-xs-12">
-
-						<div class="service">
-
-							<h5><i class="fa fa-star" aria-hidden="true"></i>Client</h5>
-
-							<div class="image-sv">
-
-								<img src="../images/imgsv.png">
-
-							</div>
-
-							<div class="right">
-
-								<a href="categories.php">View</a>
-
-							</div>
-
-						</div>
-
-					</div>
-
-					<div class="col-md-4 col-sm-4 col-xs-12">
-
-						<div class="service">
-
-							<h5><i class="fa fa-star" aria-hidden="true"></i>Client</h5>
-
-							<div class="image-sv">
-
-								<img src="../images/imgsv.png">
-
-							</div>
-
-							<div class="right">
-
-								<a href="categories.php">View</a>
-
-							</div>
-
-						</div>
-
-					</div>
-
-				</div>
-
-				<div class="dot"></div>
-
-			</div>
-
-		</div>
-
 		<div id="main">
 
 			<div class="container">
 
-				<div class="content">
+				<ol class="breadcrumb">
 
-				<h3><i class="fa fa-briefcase" aria-hidden="true"></i>Courses</h3>
+				  <li><a href="index.php">Home</a></li>				  
 
-					<ul>
+				  <li>Sent Claim</a></li>
 
-						<li>
+				  <li ><a href="form_edit_profile.php">Edit Profile</a></li>
 
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="categories.php">Fundamental</a>
+				</ol>
 
-						</li>
+				<div class="row">
 
-						<li>
+					<div class="col-md-8">
 
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">Examination</a>
+						<div class="row">
 
-						</li>
+							<div class="col-md-2 col-sm-2">
 
-						<li>
+								
 
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">Software Engineering</a>
+							</div>
 
-						</li>
+							<div class="col-md-10 col-sm-10">
 
-						<li>
+								<div class="content-user">
 
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">Greenwich Programme</a>
+								<form class="form-signin" method="POST" action="editclaim.php" enctype="multipart/form-data" >
+									<?php 
+										$ided = $_GET['id'];
 
-						</li>
+										$sqled = "select * from studentclaim inner join subjects on studentclaim.SubjectID = subjects.SubjectID where StudentClaimID = '$ided'";
+										$rowed = mysqli_fetch_object(mysqli_query($connection,$sqled));
 
-						<li>
+									?>
+									<ul>
 
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">Business Administration</a>
+										<li>
 
-						</li>
+											<label style="width:150px;display:block;float:left">
 
-						<li>
+												Title:
+												<input style="width:85%;margin-left:-4px"  hidden="true" type="text" name="ideds" value="<?php echo $rowed->StudentClaimID;?>" >
+												<img src="http://cms.fpt.edu.vn/elearning/theme/image.php/essential/core/1486604992/req"> :
 
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">International Programs</a>
+											</label>
 
-						</li>
+											<input style="width:85%;margin-left:-4px"  type="text" name="title" value="<?php echo $rowed->StudentClaimSubject;?>" disabled>
 
-						<li>
+										</li>
 
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">FSchool</a>
+										<li>
 
-						</li>
+											<label style="width:150px;display:block;float:left">
 
-						<li>
+												Body:
 
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">Master of Software Engineering</a>
+												<img src="http://cms.fpt.edu.vn/elearning/theme/image.php/essential/core/1486604992/req"> :
 
-						</li>
+											</label>
 
-						<li>
+											
 
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">Professional Certification</a>
+											<TEXTAREA  style="width:85%;height:180px;margin-left:-4px" name="body" disabled><?php echo $rowed->StudentClaimSubject;?></TEXTAREA>
 
-						</li>
+										</li>
+										<li>
 
-					</ul>
+											<label>
+
+												Choose file(File images or pdf):
+
+												<img src="http://cms.fpt.edu.vn/elearning/theme/image.php/essential/core/1486604992/req"> :
+
+											</label>
+
+											<input class="filell" type="file" name="file"  required autofocus>
+
+										</li>
+										<li>
+
+											<lable style="width:150px;display:block;float:left">
+
+												Choose Subject:
+
+												<img src="http://cms.fpt.edu.vn/elearning/theme/image.php/essential/core/1486604992/req"> :
+
+											</lable>
+
+											<?php echo $rowed->SubjectName;?>
+
+										</li>
+
+										
+
+										<button class="btn-form" type="submit" name="sentclaim">Update evident for Claim</button>
+
+									</ul>
+
+									</form>
+
+								</div>
+
+							</div>
+
+						</div>
+
+					</div>
+
+					<div class="col-md-4">
+						<div class="administration">
+							<h3><i class="fa fa-cogs" aria-hidden="true"></i>MANAGER INFORMATION</h3>
+							<ul>
+								<li>
+									<i class="fa fa-circle-o" aria-hidden="true"></i><a href="form_edit_profile.php">Edit profile</a>
+								</li>
+								<li><i class="fa fa-circle-o" aria-hidden="true"></i><a href="#">Claim</a>
+									<ul style="margin-left:17px">
+										<i class="fa fa-circle-o" aria-hidden="true"></i><a href="form_claim.php">Upload Claim</a>
+
+									</ul>
+									<ul style="margin-left:17px">
+										<i class="fa fa-circle-o" aria-hidden="true"></i><a href="viewoldclaim.php">View Claim</a>
+									</ul>
+									
+								</li>
+								<li><i class="fa fa-circle-o" aria-hidden="true"></i><a href="#">Feedback to teacher</a>
+									<ul style="margin-left:17px">
+										<i class="fa fa-circle-o" aria-hidden="true"></i><a href="form_feedback.php">Upload feedback</a>
+
+									</ul>
+									<ul style="margin-left:17px">
+										<i class="fa fa-circle-o" aria-hidden="true"></i><a href="viewfeedback.php">View feedback</a>
+									</ul>
+									
+								</li>
+								<li>
+									<i class="fa fa-circle-o" aria-hidden="true"></i><a href="categories.php">My Categories</a>
+								</li>
+							</ul>
+						</div>
+					</div>
 
 				</div>
 
@@ -558,7 +517,7 @@ $email = $_SESSION['email'];
 
 			</div>
 
-		</div>		
+		</div>	
 
 	</div>
 

@@ -1,17 +1,13 @@
 ﻿<?php 
 session_start();
 require_once('../config/connect.php');
-if(!isset($_SESSION['username'])||$_SESSION['position']!=2){
+if(!isset($_SESSION['username'])||$_SESSION['position']!=1){
 	header('Location: ../index.php');
 
 }
 $accountid = $_SESSION['id'];
-$subjectid = $_POST['subjectid'];
-$nameoffile = $_POST['nameoffile'];
-$folderfile = $_POST['folderfile'];
-
-	if(isset($_POST['ok'])){ // Người dùng đã ấn submit
-      if($_FILES['file']['name'] != NULL){ // Đã chọn file
+$id = $_POST['ideds'];
+	if($_FILES['file']['name'] != NULL){ // Đã chọn file
            // Tiến hành code upload file
 		   if($_FILES['file']['type'] == "application/pdf" ||$_FILES["file"]["type"] == "image/gif"|| $_FILES["file"]["type"] == "image/jpeg"|| $_FILES["file"]["type"] == "image/png"|| $_FILES["file"]["type"] == "image/pjpeg"|| $_FILES['file']['type'] == "application/msword"||$_FILES['file']['type'] == "application/vnd.openxmlformats-officedocument.wordprocessingml.document"
 			){
@@ -29,9 +25,9 @@ $folderfile = $_POST['folderfile'];
 			      // Upload file
 			      move_uploaded_file($tmp_name,$path.$name);
 			      	$linkupload = $path.$name;
-  						$sqlu = "INSERT INTO teacherupload (SubjectID,AccountID,Name,folder,LinkUploadTeacher) VALUES('$subjectid','$accountid','$nameoffile','$folderfile','$linkupload')";
-  						$resultu = mysqli_query($connection,$sqlu);
-				      	if($resultu){
+  						$sqlsent = "UPDATE studentclaim SET Fileup ='$linkupload' WHERE StudentClaimID = '$id' ";
+  						$resultut = mysqli_query($connection,$sqlsent);
+				      	if($resultut){
 							echo "<script>";
 							echo "alert('Upload success');";
 							echo "countDown(100,'countdown');";
@@ -43,7 +39,7 @@ $folderfile = $_POST['folderfile'];
 											echo "document.getElementById(i).innerHTML = Math.floor(now/1000);";
 										echo "}else{";
 											echo "clearInterval(interval);";
-												echo"window.location='courseview.php?id=$subjectid'";
+												echo"window.location='viewoldclaim.php'";
 										echo "}";
 									echo "},100);";
 								echo "}";    
@@ -52,7 +48,7 @@ $folderfile = $_POST['folderfile'];
 							
 						}else{
 							echo "<script>";
-							echo "alert('Upload Failed');";
+							echo "alert('update evident Failed');";
 							echo "countDown(100,'countdown');";
 								echo "function countDown(t,i){";
 									echo "var start = new Date().getTime();";
@@ -88,8 +84,22 @@ $folderfile = $_POST['folderfile'];
 							echo "</script>";
 			}
 	  }else{
-           echo "Please input file";
+          echo "<script>";
+							echo "alert('request file input');";
+							echo "countDown(100,'countdown');";
+								echo "function countDown(t,i){";
+									echo "var start = new Date().getTime();";
+									echo "var interval = setInterval(function() {";
+									echo "	var now = t-(new Date().getTime()-start);";
+										echo "if(now >= 0) {";
+											echo "document.getElementById(i).innerHTML = Math.floor(now/1000);";
+										echo "}else{";
+											echo "clearInterval(interval);";
+												echo"window.location='form_upload.php?id=$subjectid'";
+										echo "}";
+									echo "},100);";
+								echo "}";       
+							echo "</script>";
       }
-  }
-  
+
 ?>

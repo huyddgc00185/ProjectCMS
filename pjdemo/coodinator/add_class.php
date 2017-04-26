@@ -4,7 +4,7 @@ session_start();
 
 require_once('../config/connect.php');
 
-if(!isset($_SESSION['username'])||$_SESSION['position']!=1){
+if(!isset($_SESSION['username'])||$_SESSION['position']!=3){
 
 	header('Location: ../index.php');
 
@@ -12,23 +12,20 @@ if(!isset($_SESSION['username'])||$_SESSION['position']!=1){
 
 }
 
-if(isset($_POST) & !empty($_POST)){
+if(isset($_POST) & isset($_POST['addclass'])){
 
-	$title = $_POST['title'];
+	$nameclass = $_POST['nameclass'];
 
-	$messagefb = $_POST['messagefb'];
+	$selectsm = $_POST['selectsm'];
 
-	$selecte = $_POST['selecte'];
 
-	$accountid = $_SESSION['id'];
-
-$sql = "INSERT INTO studentfeedback(StudentID, TeacherID, MessageTitle, MessageContent)VALUES('$accountid','$selecte','$title','$messagefb' )";
+$sql = "INSERT INTO classes(ClassName, SemesterID)VALUES('$nameclass','$selectsm')";
 
 	$result = mysqli_query($connection, $sql);
 
 	if($result){
 							echo "<script>";
-								echo "alert('Upload success');";    
+								echo "alert('Add New Class success');";    
 								echo "countDown(100,'countdown');";
 									echo "function countDown(t,i){";
 										echo "var start = new Date().getTime();";
@@ -38,7 +35,7 @@ $sql = "INSERT INTO studentfeedback(StudentID, TeacherID, MessageTitle, MessageC
 												echo "document.getElementById(i).innerHTML = Math.floor(now/1000);";
 											echo "}else{";
 												echo "clearInterval(interval);";
-													echo"window.location='viewfeedback.php'";
+													echo"window.location='viewall.php'";
 											echo "}";
 										echo "},100);";
 									echo "}";
@@ -48,7 +45,7 @@ $sql = "INSERT INTO studentfeedback(StudentID, TeacherID, MessageTitle, MessageC
 	}else{
 
 							echo "<script>";
-								echo "alert('Upload Failed');";    
+								echo "alert('Add New Class Failed');";    
 								echo "countDown(100,'countdown');";
 									echo "function countDown(t,i){";
 										echo "var start = new Date().getTime();";
@@ -58,7 +55,7 @@ $sql = "INSERT INTO studentfeedback(StudentID, TeacherID, MessageTitle, MessageC
 												echo "document.getElementById(i).innerHTML = Math.floor(now/1000);";
 											echo "}else{";
 												echo "clearInterval(interval);";
-													echo"window.location='viewfeedback.php'";
+													echo"window.location='viewall.php'";
 											echo "}";
 										echo "},100);";
 									echo "}";

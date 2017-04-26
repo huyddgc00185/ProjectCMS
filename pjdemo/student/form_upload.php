@@ -306,11 +306,12 @@ $email = $_SESSION['email'];
 
 							</ul>
 
-							<form class="navbar-form navbar-left">
+							
+							<form action="search.php" method="POST" class="navbar-form navbar-left">
 
 								<div class="form-group">
 
-									<input type="text" class="form-control">
+									<input name="searchcate" type="text" class="form-control">
 
 								</div>
 

@@ -1,0 +1,2 @@
+ErrorDocument 404 /pjdemo/errors.html
+RewriteRule ^(.*)\.html$ $1.php [R=301,L]

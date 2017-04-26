@@ -324,15 +324,16 @@ $email = $_SESSION['email'];
 
 							</ul>
 
-							<form class="navbar-form navbar-left">
+							
+							<form action="search.php" method="POST" class="navbar-form navbar-left">
 
 								<div class="form-group">
 
-									<input type="text"  class="form-control">
+									<input name="searchcate" type="text" class="form-control">
 
 								</div>
 
-								<button type="submit" class="btn btn-info">Search</button>
+								<button type="submit" class="btn btn-default">Search</button>
 
 							</form>
 
@@ -416,7 +417,7 @@ $email = $_SESSION['email'];
 
 						<ul><?php
 
-								$sql = "SELECT * FROM subjects  JOIN account on subjects.AccountID = account.AccountID  JOIN classes on subjects.ClassID = classes.ClassID WHERE Position = 2";
+								$sql = "SELECT * FROM subjects  JOIN account on subjects.AccountID = account.AccountID  JOIN classes on subjects.ClassID = classes.ClassID JOIN studentintosubject on subjects.SubjectID = studentintosubject.SubjectID where StudentID = $id ";
 
 								$result = mysqli_query($connection,$sql);
 

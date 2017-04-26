@@ -166,11 +166,17 @@ $row=mysqli_fetch_object($results);
 									</ul>
 								</li>
 							</ul>
-							<form class="navbar-form navbar-left">
+							
+							<form action="search.php" method="POST" class="navbar-form navbar-left">
+
 								<div class="form-group">
-									<input type="text" class="form-control">
+
+									<input name="searchcate" type="text" class="form-control">
+
 								</div>
+
 								<button type="submit" class="btn btn-default">Search</button>
+
 							</form>
 							<ul class="nav navbar-nav navbar-right">
 								<li>
@@ -233,8 +239,15 @@ $row=mysqli_fetch_object($results);
 								<li>
 									<i class="fa fa-circle-o" aria-hidden="true"></i><a href="form_edit_profile.php">Edit profile</a>
 								</li>
-								<li>
-									<i class="fa fa-circle-o" aria-hidden="true"></i><a href="#">Claim</a>
+								<li><i class="fa fa-circle-o" aria-hidden="true"></i><a href="#">Claim</a>
+									<ul style="margin-left:17px">
+										<i class="fa fa-circle-o" aria-hidden="true"></i><a href="form_claim.php">Upload Claim</a>
+
+									</ul>
+									<ul style="margin-left:17px">
+										<i class="fa fa-circle-o" aria-hidden="true"></i><a href="viewoldclaim.php">View Claim</a>
+									</ul>
+									
 								</li>
 								<li><i class="fa fa-circle-o" aria-hidden="true"></i><a href="#">Feedback to teacher</a>
 									<ul style="margin-left:17px">

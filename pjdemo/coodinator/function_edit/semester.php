@@ -2,9 +2,9 @@
 
 session_start();
 
-require_once('../config/connect.php');
+require_once('../../config/connect.php');
 
-if(!isset($_SESSION['username'])||$_SESSION['position']!=1){
+if(!isset($_SESSION['username'])||$_SESSION['position']!=3){
 
 	header('Location: ../index.php');
 
@@ -12,23 +12,19 @@ if(!isset($_SESSION['username'])||$_SESSION['position']!=1){
 
 }
 
-if(isset($_POST) & !empty($_POST)){
+if(isset($_POST) & isset($_POST['editsemester'])){
 
-	$title = $_POST['title'];
+	$namesemester = $_POST['namesemester'];
+	$idsemester = $_POST['idsemester'];
 
-	$messagefb = $_POST['messagefb'];
 
-	$selecte = $_POST['selecte'];
-
-	$accountid = $_SESSION['id'];
-
-$sql = "INSERT INTO studentfeedback(StudentID, TeacherID, MessageTitle, MessageContent)VALUES('$accountid','$selecte','$title','$messagefb' )";
+$sql = "UPDATE semester SET SemesterNo ='$namesemester' WHERE SemesterID = '$idsemester' ";
 
 	$result = mysqli_query($connection, $sql);
 
 	if($result){
 							echo "<script>";
-								echo "alert('Upload success');";    
+								echo "alert('Edit semester success');";    
 								echo "countDown(100,'countdown');";
 									echo "function countDown(t,i){";
 										echo "var start = new Date().getTime();";
@@ -38,7 +34,7 @@ $sql = "INSERT INTO studentfeedback(StudentID, TeacherID, MessageTitle, MessageC
 												echo "document.getElementById(i).innerHTML = Math.floor(now/1000);";
 											echo "}else{";
 												echo "clearInterval(interval);";
-													echo"window.location='viewfeedback.php'";
+													echo"window.location='../viewall.php'";
 											echo "}";
 										echo "},100);";
 									echo "}";
@@ -48,7 +44,7 @@ $sql = "INSERT INTO studentfeedback(StudentID, TeacherID, MessageTitle, MessageC
 	}else{
 
 							echo "<script>";
-								echo "alert('Upload Failed');";    
+								echo "alert('Edit semester Failed');";    
 								echo "countDown(100,'countdown');";
 									echo "function countDown(t,i){";
 										echo "var start = new Date().getTime();";
@@ -58,7 +54,7 @@ $sql = "INSERT INTO studentfeedback(StudentID, TeacherID, MessageTitle, MessageC
 												echo "document.getElementById(i).innerHTML = Math.floor(now/1000);";
 											echo "}else{";
 												echo "clearInterval(interval);";
-													echo"window.location='viewfeedback.php'";
+													echo"window.location='../viewall.php'";
 											echo "}";
 										echo "},100);";
 									echo "}";

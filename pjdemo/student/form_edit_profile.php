@@ -324,15 +324,16 @@ $email = $_SESSION['email'];
 
 							</ul>
 
-							<form class="navbar-form navbar-left">
+							
+							<form action="search.php" method="POST" class="navbar-form navbar-left">
 
 								<div class="form-group">
 
-									<input type="text"  class="form-control">
+									<input name="searchcate" type="text" class="form-control">
 
 								</div>
 
-								<button type="submit" class="btn btn-info">Search</button>
+								<button type="submit" class="btn btn-default">Search</button>
 
 							</form>
 
@@ -543,56 +544,38 @@ $email = $_SESSION['email'];
 						</div>
 
 						<div class="col-md-4">
+						<div class="administration">
+							<h3><i class="fa fa-cogs" aria-hidden="true"></i>MANAGER INFORMATION</h3>
+							<ul>
+								<li>
+									<i class="fa fa-circle-o" aria-hidden="true"></i><a href="form_edit_profile.php">Edit profile</a>
+								</li>
+								<li><i class="fa fa-circle-o" aria-hidden="true"></i><a href="#">Claim</a>
+									<ul style="margin-left:17px">
+										<i class="fa fa-circle-o" aria-hidden="true"></i><a href="form_claim.php">Upload Claim</a>
 
-							<div class="administration">
+									</ul>
+									<ul style="margin-left:17px">
+										<i class="fa fa-circle-o" aria-hidden="true"></i><a href="viewoldclaim.php">View Claim</a>
+									</ul>
+									
+								</li>
+								<li><i class="fa fa-circle-o" aria-hidden="true"></i><a href="#">Feedback to teacher</a>
+									<ul style="margin-left:17px">
+										<i class="fa fa-circle-o" aria-hidden="true"></i><a href="form_feedback.php">Upload feedback</a>
 
-								<h3><i class="fa fa-cogs" aria-hidden="true"></i>MANAGER INFORMATION</h3>
-
-								<ul>
-
-									<li>
-
-										<i class="fa fa-circle-o" aria-hidden="true"></i><a href="form_edit_profile.php">Edit profile</a>
-
-									</li>
-
-									<li>
-
-										<i class="fa fa-circle-o" aria-hidden="true"></i><a href="#">Claim</a>
-
-									</li>
-
-									<li><i class="fa fa-circle-o" aria-hidden="true"></i><a href="#">Feedback to teacher</a>
-
-										<ul style="margin-left:17px">
-
-											<i class="fa fa-circle-o" aria-hidden="true"></i><a href="form_feedback.php">Upload feedback</a>
-
-
-
-										</ul>
-
-										<ul style="margin-left:17px">
-
-											<i class="fa fa-circle-o" aria-hidden="true"></i><a href="viewfeedback.php">View feedback</a>
-
-										</ul>
-
-										
-
-									</li>
-
-									<li>
-
-										<i class="fa fa-circle-o" aria-hidden="true"></i><a href="categories.php">My Categories</a>
-
-									</li>
-
-								</ul>
-
-							</div>
-
-						</div>	
+									</ul>
+									<ul style="margin-left:17px">
+										<i class="fa fa-circle-o" aria-hidden="true"></i><a href="viewfeedback.php">View feedback</a>
+									</ul>
+									
+								</li>
+								<li>
+									<i class="fa fa-circle-o" aria-hidden="true"></i><a href="categories.php">My Categories</a>
+								</li>
+							</ul>
+						</div>
+					</div>	
 
 					</div>
 

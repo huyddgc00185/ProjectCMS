@@ -4,7 +4,7 @@ session_start();
 
 require_once('../config/connect.php');
 
-if(!isset($_SESSION['username'])||$_SESSION['position']!=1){
+if(!isset($_SESSION['username'])||$_SESSION['position']!=3){
 
 	header('Location: ../index.php');
 
@@ -12,23 +12,32 @@ if(!isset($_SESSION['username'])||$_SESSION['position']!=1){
 
 }
 
-if(isset($_POST) & !empty($_POST)){
+if(isset($_POST) & isset($_POST['addaccount'])){
+	$account = $_POST['account'];
+	$fullname = $_POST['name'];
+	$position = $_POST['position'];
+	$email = mysqli_real_escape_string($connection, $_POST['email']);
 
-	$title = $_POST['title'];
+	$password = $_POST['password'];
 
-	$messagefb = $_POST['messagefb'];
+	$address = $_POST['address'];
 
-	$selecte = $_POST['selecte'];
+	$phone = $_POST['phone'];
 
-	$accountid = $_SESSION['id'];
+	$day = $_POST['day'];
 
-$sql = "INSERT INTO studentfeedback(StudentID, TeacherID, MessageTitle, MessageContent)VALUES('$accountid','$selecte','$title','$messagefb' )";
+
+
+  	
+
+$sql = "INSERT INTO account(AccountAcc,AccountPassword,AccountFullName,DateOfBirth,AccountAddress,AccountEmail,PhoneNumber,Position)VALUES('$account','$password','$fullname','$day','$address','$email','$phone','$position')";
 
 	$result = mysqli_query($connection, $sql);
 
 	if($result){
-							echo "<script>";
-								echo "alert('Upload success');";    
+
+		echo "<script>";
+								echo "alert('Add New Account  success');";    
 								echo "countDown(100,'countdown');";
 									echo "function countDown(t,i){";
 										echo "var start = new Date().getTime();";
@@ -38,7 +47,7 @@ $sql = "INSERT INTO studentfeedback(StudentID, TeacherID, MessageTitle, MessageC
 												echo "document.getElementById(i).innerHTML = Math.floor(now/1000);";
 											echo "}else{";
 												echo "clearInterval(interval);";
-													echo"window.location='viewfeedback.php'";
+													echo"window.location='viewall.php'";
 											echo "}";
 										echo "},100);";
 									echo "}";
@@ -47,8 +56,8 @@ $sql = "INSERT INTO studentfeedback(StudentID, TeacherID, MessageTitle, MessageC
 
 	}else{
 
-							echo "<script>";
-								echo "alert('Upload Failed');";    
+		echo "<script>";
+								echo "alert('Add New Account Failed');";    
 								echo "countDown(100,'countdown');";
 									echo "function countDown(t,i){";
 										echo "var start = new Date().getTime();";
@@ -58,7 +67,7 @@ $sql = "INSERT INTO studentfeedback(StudentID, TeacherID, MessageTitle, MessageC
 												echo "document.getElementById(i).innerHTML = Math.floor(now/1000);";
 											echo "}else{";
 												echo "clearInterval(interval);";
-													echo"window.location='viewfeedback.php'";
+													echo"window.location='viewall.php'";
 											echo "}";
 										echo "},100);";
 									echo "}";

@@ -152,11 +152,17 @@ $email = $_SESSION['email'];
 									</ul>
 								</li>
 							</ul>
-							<form class="navbar-form navbar-left">
+							
+							<form action="search.php" method="POST" class="navbar-form navbar-left">
+
 								<div class="form-group">
-									<input type="text" class="form-control">
+
+									<input name="searchcate" type="text" class="form-control">
+
 								</div>
+
 								<button type="submit" class="btn btn-default">Search</button>
+
 							</form>
 							<ul class="nav navbar-nav navbar-right">
 								<li>

@@ -1,14 +1,24 @@
-<?php
+<?php 
 
 session_start();
-
-
 
 require_once('../config/connect.php');
 
 if(!isset($_SESSION['username'])||$_SESSION['position']!=1){
 
-	header('Location: ../index.php');	
+	header('Location: ../index.php');
+
+
+
+}else{
+
+	$id =$_SESSION['id'];
+
+      $sqls="SELECT * FROM Account where AccountID = $id";
+
+			$results = mysqli_query($connection,$sqls);
+
+			$row=mysqli_fetch_object($results);
 
 }
 
@@ -20,11 +30,17 @@ $fullname = $_SESSION['fullname'];
 
 $email = $_SESSION['email'];
 
+$search = $_POST['searchcate'];
+
 ?>
+
+
 
 <!DOCTYPE html>
 
 <html>
+
+
 
 <head>
 
@@ -68,11 +84,13 @@ $email = $_SESSION['email'];
 
 		$(function() {
 
-			var $modalAnimateTime = 300;
+		    var $modalAnimateTime = 300;
 
 		    var $msgAnimateTime = 150;
 
 		    var $msgShowTime = 2000;
+
+		    
 
 		    function modalAnimate ($oldForm, $newForm) {
 
@@ -240,7 +258,7 @@ $email = $_SESSION['email'];
 
 						<div class="login-user">
 
-							<a href="profile.php"><i class="fa fa-user" aria-hidden="true"></i><?php echo $fullname; ?></a>
+							<a href="profile.php"><i class="fa fa-user" aria-hidden="true"></i><?php echo$fullname;?></a>
 
 						</div>						
 
@@ -276,7 +294,7 @@ $email = $_SESSION['email'];
 
 							</button>
 
-							<a class="navbar-brand" href="#"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
+							<a class="navbar-brand" href="index.php"><i class="fa fa-home" aria-hidden="true"></i>Home</a>
 
 						</div>
 
@@ -306,6 +324,7 @@ $email = $_SESSION['email'];
 
 							</ul>
 
+							
 							<form action="search.php" method="POST" class="navbar-form navbar-left">
 
 								<div class="form-group">
@@ -324,7 +343,7 @@ $email = $_SESSION['email'];
 
 									<div class="login-pop">
 
-				                        <a href="../logout.php"  data-target="#login-modal">Log out</a>
+				                        <a href="../logout.php" class="loginButton" role="button" >Log out</a>
 
 				                    </div>
 
@@ -342,209 +361,117 @@ $email = $_SESSION['email'];
 
 		</div>
 
-		<div id="banner">
-
-			<div id="da-slider" class="da-slider">
-
-				<div class="da-slide">
-
-					<h2>Warm welcome</h2>
-
-					<p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane.</p>
-
-					<div class="da-img"><img src="../images/1.png" alt="image01" /></div>
-
-				</div>
-
-				<div class="da-slide">
-
-					<h2>Easy management</h2>
-
-					<p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p>
-
-					<div class="da-img"><img src="../images/2.png" alt="image01" /></div>
-
-				</div>
-
-				<div class="da-slide">
-
-					<h2>Revolution</h2>
-
-					<p>A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.</p>
-
-					<div class="da-img"><img src="../images/3.png" alt="image01" /></div>
-
-				</div>
-
-				<div class="da-slide">
-
-					<h2>Quality Control</h2>
-
-					<p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
-
-					<div class="da-img"><img src="../images/4.png" alt="image01" /></div>
-
-				</div>
-
-				<nav class="da-arrows">
-
-					<span class="da-arrows-prev"></span>
-
-					<span class="da-arrows-next"></span>
-
-				</nav>
-
-			</div>
-
-		</div>
-
-		<div id="sv">
-
-			<div class="container">
-
-				<div class="row">
-
-					<div class="col-md-4 col-sm-4 col-xs-12">
-
-						<div class="service">
-
-							<h5><i class="fa fa-star" aria-hidden="true"></i>Client</h5>
-
-							<div class="image-sv">
-
-								<img src="../images/imgsv.png">
-
-							</div>
-
-							<div class="right">
-
-								<a href="categories.php">View</a>
-
-							</div>
-
-						</div>
-
-					</div>
-
-					<div class="col-md-4 col-sm-4 col-xs-12">
-
-						<div class="service">
-
-							<h5><i class="fa fa-star" aria-hidden="true"></i>Client</h5>
-
-							<div class="image-sv">
-
-								<img src="../images/imgsv.png">
-
-							</div>
-
-							<div class="right">
-
-								<a href="categories.php">View</a>
-
-							</div>
-
-						</div>
-
-					</div>
-
-					<div class="col-md-4 col-sm-4 col-xs-12">
-
-						<div class="service">
-
-							<h5><i class="fa fa-star" aria-hidden="true"></i>Client</h5>
-
-							<div class="image-sv">
-
-								<img src="../images/imgsv.png">
-
-							</div>
-
-							<div class="right">
-
-								<a href="categories.php">View</a>
-
-							</div>
-
-						</div>
-
-					</div>
-
-				</div>
-
-				<div class="dot"></div>
-
-			</div>
-
-		</div>
-
 		<div id="main">
 
 			<div class="container">
 
-				<div class="content">
+				<ol class="breadcrumb">
 
-				<h3><i class="fa fa-briefcase" aria-hidden="true"></i>Courses</h3>
+					  <li><a href="index.php">Home</a></li>				  
 
-					<ul>
+					  <li class="active">Courses</li>
 
-						<li>
+					  <li><a href="profile.php">View Profile</a></li>
 
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="categories.php">Fundamental</a>
+				</ol>
 
-						</li>
+				<div class="categorypicker">
 
-						<li>
+					<div class="sl-category">
 
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">Examination</a>
+						<label>Course categories :</label>
 
-						</li>
+						<select>
 
-						<li>
+							<option>Computing and Systems Development</option>
 
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">Software Engineering</a>
+							<option>Interaction Design</option>
 
-						</li>
+							<option>HTML & CSS</option>
 
-						<li>
+							<option>Java</option>
 
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">Greenwich Programme</a>
+							<option>Cloud Computing</option>
 
-						</li>
+							<option>Programming in .NET</option>
 
-						<li>
+							<option>Computer Systems</option>
 
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">Business Administration</a>
+							<option>Website Design</option>
 
-						</li>
+							<option>Programming in Java</option>
 
-						<li>
+						</select>
 
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">International Programs</a>
+					</div>				
 
-						</li>
+					<div class="name">
 
-						<li>
+						<label>Course name :</label>
 
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">FSchool</a>
+						<p>Computing and Systems Development</p>
 
-						</li>
+					</div>
 
-						<li>
+					<div class="content-ctg">
 
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">Master of Software Engineering</a>
+						<ul><?php
 
-						</li>
+								$sql = "SELECT * FROM subjects JOIN account on subjects.AccountID = account.AccountID JOIN classes on subjects.ClassID = classes.ClassID WHERE Position = '2' AND SubjectName LIKE '%$search%'";
 
-						<li>
+								$result = mysqli_query($connection,$sql);
 
-							<i class="fa fa-hand-o-right" aria-hidden="true"></i><a href="#">Professional Certification</a>
+								while($row = mysqli_fetch_object($result)){?>
 
-						</li>
 
-					</ul>
 
-				</div>
+									<li>
+
+										<div class="info">
+
+											<div class="info-icon">
+
+												<i class="fa fa-user" aria-hidden="true"></i>
+
+												<i class="fa fa-key" aria-hidden="true"></i>
+
+											</div>
+
+											<ul>
+
+												<li><a class="info-ct" href="courseview.php?idsj=<?php echo$row->SubjectID?>&idt=<?php echo$row->AccountID?>"><i class="fa fa-star" aria-hidden="true"></i>0446 - <?php echo $row->ClassName?> - <?php echo$row->SubjectName?></a></li>
+
+												<li>
+
+													<label><i class="fa fa-graduation-cap" aria-hidden="true"></i>Teacher: </label>
+
+													<a href="#">(Khoa quốc tế ) <?php echo $row->AccountFullName?></a>
+
+												</li>
+
+											</ul>									
+
+										</div>
+
+									</li>
+
+
+
+
+
+								<?php }
+
+							?>
+
+							
+
+							
+
+						</ul>
+
+					</div>
+
+				</div>			
 
 			</div>
 
@@ -558,7 +485,7 @@ $email = $_SESSION['email'];
 
 			</div>
 
-		</div>		
+		</div>	
 
 	</div>
 

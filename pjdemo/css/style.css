@@ -1460,8 +1460,44 @@ nav ul li .dropdown-menu {
 
 } 
 
+.tbl-viewout {
+	width: 100%;
+	border: 1px;
+	text-align: center;
+	margin: 0 0 30px 0;
+	/*overflow-y: scroll;
+	display: inline-block;
+	height:150px;*/
+
+}
 
 
+.tbl-viewout tr {
+
+	border: 1px solid #ccc;
+	padding: 2px
+
+}
+
+.tbl-viewout tr th, .tbl-viewout tr td {
+	border-right: 1px solid #ccc;
+	text-align: center;
+	padding: 0 2px;
+	
+}
+
+.tbl-viewout tr th {
+	background-color: #E1E1E1;
+} 
+
+.tbl-viewout tr td a i {
+	font-size: 16px;
+/*	padding: 0 40px 0 40px;*/
+}
+
+.title-tbl-viewout {
+	text-align: center;
+}
 @media only screen and (max-width: 768px) {
 
 	#login-modal .modal-dialog {
@@ -1471,3 +1507,12 @@ nav ul li .dropdown-menu {
   	}
 
 }
+tbody{
+	border: 1px;
+	 height: 200px;
+    display: block;
+    width: 100%;
+    overflow: auto;
+
+}
+th.thfu{width: 30%}
